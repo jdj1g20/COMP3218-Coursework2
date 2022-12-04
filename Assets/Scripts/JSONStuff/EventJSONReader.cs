@@ -4,14 +4,13 @@ using System.IO;
 using UnityEngine;
 
 
-public class JSONReader : MonoBehaviour
+public static class EventJSONReader
 {
-    public TextAsset jsonFile;
 
-    void Start()
+    public static Events GenerateEventsFromJSON(TextAsset json)
     {
-        Events eventsList = JsonUtility.FromJson<Events>(jsonFile.text);
-
+        Events eventsList = JsonUtility.FromJson<Events>(json.text);
+        
         foreach (Event even in eventsList.events)
         {
             Debug.Log("Found Event: " + even.description);
@@ -34,5 +33,6 @@ public class JSONReader : MonoBehaviour
             Debug.Log("Event Decision 2 stat2Amount: " + even.decision2.stat2Amount);
             Debug.Log("Event Decision 2 SFX: " + even.decision2.SFX);
         }
+        return eventsList;
     }
 }
