@@ -1,7 +1,7 @@
 {
     "events": [
         {
-            "description": "Oh no there's a bear!",
+            "description": "Oh no there's a bear! What shall we do? Kill it or make friends with it?",
             "advisor": "MilitaryA",
             "SFX": "bearNoises",
             "decision1Desc": "Kill it with fire!",

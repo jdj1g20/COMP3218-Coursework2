@@ -8,15 +8,20 @@ public class MainGameLoopScript : MonoBehaviour
     public TextAsset mainEventsJSON;
     Events genericEvents;
     Events mainEvents;
+
+    public GenericEventPlayer genericEventPlayer;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Starting Main Game Loop");
+        Debug.Log("Importing Generic Events");
         genericEvents = EventJSONReader.GenerateEventsFromJSON(genericEventsJSON);
 
         // Play back story
-
+        Debug.Log("genericEvents.events[0].description");
+        Debug.Log(genericEvents.events[0].description);
         // Three Generic Events
-
+        StartCoroutine(genericEventPlayer.PlayGenericEvent(genericEvents.events[0]));
         // One Main Story Event
 
         // Three Generic Events
