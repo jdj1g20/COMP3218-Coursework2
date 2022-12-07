@@ -2,8 +2,12 @@ from tkinter import *
 import json
 window=Tk()
 # add widgets here
-properties = ['military','economy','religion','food','social']
-advisors = ['militaryA','economyA','religionA','foodA','socialA','catA']
+# make sure to link to the narrative
+# there should be a good reason for each property, events, mechanics 
+# events should be responsive to properties 
+
+properties = ['military','economy','approval','diplomacy']
+advisors = ['militaryA','economyA','civilA','catA']
 sounds = ['bearDieWithFire','happyBearNoises','ratEatingNoises','ratPainNoise']
 
 def callback(self, P):
