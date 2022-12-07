@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class GenericEventPlayer : MonoBehaviour
+public class GenericEventPlayer : EventPlayer
 {
-    
-    GameObject advisor;
+    [SerializeField]
+    AdvisorScript advisor;
     [SerializeField]
     GameObject eventCanvas, eventDescriptionBox, button1, button2;
     [SerializeField]
@@ -18,28 +18,68 @@ public class GenericEventPlayer : MonoBehaviour
 
     Event currentEvent;
     float waitAfterDescription = 1f;
+    public bool initialEventDescriptionPlaying = false;
+    public bool currentEventEnded = false;
 
     void Start() {
         //eventText = eventDescriptionBox.GetComponent<TextRevealScript>();
         //button1Text = button1.GetComponent<TextRevealScript>();
         //button2Text = button2.GetComponent<TextRevealScript>();
     }
-    public IEnumerator PlayGenericEvent(Event eventToPlay)
+
+    public override void PlayEvent(Event eventToPlay)
     {
         currentEvent = eventToPlay;
         Debug.Log("Starting event");
+        // Reveal Advisor
+        RevealAdvisor();
+
         eventCanvas.SetActive(true);
         button1.SetActive(false); 
         button2.SetActive(false);
+        currentEventEnded = false;
+        
+        
+    }
 
-        StartCoroutine(eventText.NewTextToDisplay(eventToPlay.description));
-        yield return new WaitForSeconds(eventToPlay.description.Length * 0.1f + waitAfterDescription);
+    public override IEnumerator StartInitialEventDescription() {
+        yield return (3f);
+        initialEventDescriptionPlaying = true;
+        StartCoroutine(eventText.NewTextToDisplay(currentEvent.description));
+    }
 
+    private void RevealAdvisor() {
+        Debug.Log("Revealing Advisor");
+        // Set advisor to currentEvent.advisor
+        advisor.AdvisorEnterScene();
+        //Invoke("StartInitialEventDescription", 5f);
+    }
+
+    void Update () {
+        if (Input.GetKeyDown("space")) {
+            if (currentEventEnded) {
+                advisor.AdvisorLeaveScene();
+            }
+        }
+    }
+
+
+    public override void TextEnded()
+    {
+        if (initialEventDescriptionPlaying) {
+            RevealEventChoices();
+        } else {
+            currentEventEnded = true;
+            
+        }
+    }
+
+    public override void RevealEventChoices() {
+        initialEventDescriptionPlaying = false;
         button1.SetActive(true);
         button2.SetActive(true);
-
-        button1Text.text = eventToPlay.decision1Desc;
-        button2Text.text = eventToPlay.decision2Desc;
+        button1Text.text = currentEvent.decision1Desc;
+        button2Text.text = currentEvent.decision2Desc;
     }
 
     public void SelectedButton1(){
@@ -70,7 +110,6 @@ public class GenericEventPlayer : MonoBehaviour
         eventString += currentEvent.decision1.stat2 + " By " + Mathf.Abs(currentEvent.decision1.stat2Amount);
 
         StartCoroutine(eventText.NewTextToDisplay(eventString));
-        yield return new WaitForSeconds(eventString.Length * 0.1f + waitAfterDescription);
     }
 
     public IEnumerator Button2Select(){
@@ -95,7 +134,6 @@ public class GenericEventPlayer : MonoBehaviour
         eventString += currentEvent.decision2.stat2 + " By " + Mathf.Abs(currentEvent.decision2.stat2Amount);
 
         StartCoroutine(eventText.NewTextToDisplay(eventString));
-        yield return new WaitForSeconds(eventString.Length * 0.1f + waitAfterDescription);
     }
 
     

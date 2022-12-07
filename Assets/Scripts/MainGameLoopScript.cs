@@ -21,7 +21,7 @@ public class MainGameLoopScript : MonoBehaviour
         Debug.Log("genericEvents.events[0].description");
         Debug.Log(genericEvents.events[0].description);
         // Three Generic Events
-        StartCoroutine(genericEventPlayer.PlayGenericEvent(genericEvents.events[0]));
+        genericEventPlayer.PlayEvent(genericEvents.events[0]);
         // One Main Story Event
 
         // Three Generic Events

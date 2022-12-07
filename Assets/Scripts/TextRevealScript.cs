@@ -4,7 +4,8 @@ using UnityEngine;
 using TMPro;
 public class TextRevealScript : MonoBehaviour
 {
-
+    [SerializeField]
+    EventPlayer eventPlayer;
     private TextMeshProUGUI text;
     private bool spaceDetected = false;
 
@@ -34,7 +35,8 @@ public class TextRevealScript : MonoBehaviour
             yield return new WaitForSeconds(0.10f);
 
         }
-
+        Debug.Log("Text Ended");
+        eventPlayer.TextEnded();
     }
 
     void Update()
