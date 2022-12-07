@@ -534,8 +534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1069072f5bd8e49bba42aec66ab704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventPlayer: {fileID: 1774782563}
   fadeIn: 0
+  fadeOut: 0
   blackToWhiteTransition: 0
+  whiteToBlackTransition: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +746,6 @@ GameObject:
   - component: {fileID: 977389208}
   - component: {fileID: 977389207}
   - component: {fileID: 977389206}
-  - component: {fileID: 977389209}
   m_Layer: 5
   m_Name: Option1Button
   m_TagString: Untagged
@@ -866,19 +868,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977389204}
   m_CullTransparentMesh: 1
---- !u!114 &977389209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977389204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27007d4443a3799469fe7927cc4835b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventPlayer: {fileID: 0}
 --- !u!1 &1153900735
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1153900736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1118,6 @@ GameObject:
   - component: {fileID: 1509754988}
   - component: {fileID: 1509754987}
   - component: {fileID: 1509754986}
-  - component: {fileID: 1509754989}
   m_Layer: 5
   m_Name: Option2Button
   m_TagString: Untagged
@@ -1252,19 +1240,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509754984}
   m_CullTransparentMesh: 1
---- !u!114 &1509754989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509754984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27007d4443a3799469fe7927cc4835b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventPlayer: {fileID: 0}
 --- !u!1 &1584749603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec9135957db0c4c91c84f5dea124d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  advisor: {fileID: 548661290}
   eventCanvas: {fileID: 1153900735}
   eventDescriptionBox: {fileID: 1711531887}
   button1: {fileID: 977389204}
@@ -1517,6 +1493,7 @@ MonoBehaviour:
   button1Description: {fileID: 1278156317}
   button2Description: {fileID: 1584749605}
   initialEventDescriptionPlaying: 0
+  currentEventEnded: 0
 --- !u!4 &1774782564
 Transform:
   m_ObjectHideFlags: 0

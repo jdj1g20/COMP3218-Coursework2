@@ -21,7 +21,8 @@ public class GenericEventPlayer : EventPlayer
     public bool initialEventDescriptionPlaying = false;
     public bool currentEventEnded = false;
 
-    void Start() {
+    void Start()
+    {
         //eventText = eventDescriptionBox.GetComponent<TextRevealScript>();
         //button1Text = button1.GetComponent<TextRevealScript>();
         //button2Text = button2.GetComponent<TextRevealScript>();
@@ -34,30 +35,36 @@ public class GenericEventPlayer : EventPlayer
         // Reveal Advisor
         RevealAdvisor();
 
-        eventCanvas.SetActive(true);
-        button1.SetActive(false); 
-        button2.SetActive(false);
+
         currentEventEnded = false;
-        
-        
+
+
     }
 
-    public override IEnumerator StartInitialEventDescription() {
+    public override IEnumerator StartInitialEventDescription()
+    {
         yield return (3f);
+        eventCanvas.SetActive(true);
+        button1.SetActive(false);
+        button2.SetActive(false);
         initialEventDescriptionPlaying = true;
         StartCoroutine(eventText.NewTextToDisplay(currentEvent.description));
     }
 
-    private void RevealAdvisor() {
+    private void RevealAdvisor()
+    {
         Debug.Log("Revealing Advisor");
         // Set advisor to currentEvent.advisor
         advisor.AdvisorEnterScene();
         //Invoke("StartInitialEventDescription", 5f);
     }
 
-    void Update () {
-        if (Input.GetKeyDown("space")) {
-            if (currentEventEnded) {
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            if (currentEventEnded)
+            {
                 advisor.AdvisorLeaveScene();
             }
         }
@@ -66,15 +73,19 @@ public class GenericEventPlayer : EventPlayer
 
     public override void TextEnded()
     {
-        if (initialEventDescriptionPlaying) {
+        if (initialEventDescriptionPlaying)
+        {
             RevealEventChoices();
-        } else {
+        }
+        else
+        {
             currentEventEnded = true;
-            
+
         }
     }
 
-    public override void RevealEventChoices() {
+    public override void RevealEventChoices()
+    {
         initialEventDescriptionPlaying = false;
         button1.SetActive(true);
         button2.SetActive(true);
@@ -82,29 +93,38 @@ public class GenericEventPlayer : EventPlayer
         button2Text.text = currentEvent.decision2Desc;
     }
 
-    public void SelectedButton1(){
+    public void SelectedButton1()
+    {
         StartCoroutine(Button1Select());
     }
 
-    public void SelectedButton2(){
+    public void SelectedButton2()
+    {
         StartCoroutine(Button2Select());
     }
-    public IEnumerator Button1Select(){
+    public IEnumerator Button1Select()
+    {
         Debug.Log("Chosen Decision 1");
         yield return new WaitForSeconds(0.3f);
         button1.SetActive(false);
         button2.SetActive(false);
         string eventString = currentEvent.decision1.description + "\n";
-        if(currentEvent.decision1.stat1Amount > 0) {
+        if (currentEvent.decision1.stat1Amount > 0)
+        {
             eventString += "Increasing ";
-        } else {
+        }
+        else
+        {
             eventString += "Decreasing ";
         }
         eventString += currentEvent.decision1.stat1 + " By " + Mathf.Abs(currentEvent.decision1.stat1Amount) + "\n";
 
-        if(currentEvent.decision1.stat2Amount > 0) {
+        if (currentEvent.decision1.stat2Amount > 0)
+        {
             eventString += "Increasing ";
-        } else {
+        }
+        else
+        {
             eventString += "Decreasing ";
         }
         eventString += currentEvent.decision1.stat2 + " By " + Mathf.Abs(currentEvent.decision1.stat2Amount);
@@ -112,23 +132,30 @@ public class GenericEventPlayer : EventPlayer
         StartCoroutine(eventText.NewTextToDisplay(eventString));
     }
 
-    public IEnumerator Button2Select(){
+    public IEnumerator Button2Select()
+    {
         Debug.Log("Chosen Decision 2");
         yield return new WaitForSeconds(0.3f);
         button1.SetActive(false);
         button2.SetActive(false);
 
         string eventString = currentEvent.decision2.description + "\n";
-        if(currentEvent.decision2.stat1Amount > 0) {
+        if (currentEvent.decision2.stat1Amount > 0)
+        {
             eventString += "Increasing ";
-        } else {
+        }
+        else
+        {
             eventString += "Decreasing ";
         }
         eventString += currentEvent.decision2.stat1 + " By " + Mathf.Abs(currentEvent.decision2.stat1Amount) + "\n";
 
-        if(currentEvent.decision2.stat2Amount > 0) {
+        if (currentEvent.decision2.stat2Amount > 0)
+        {
             eventString += "Increasing ";
-        } else {
+        }
+        else
+        {
             eventString += "Decreasing ";
         }
         eventString += currentEvent.decision2.stat2 + " By " + Mathf.Abs(currentEvent.decision2.stat2Amount);
@@ -136,5 +163,5 @@ public class GenericEventPlayer : EventPlayer
         StartCoroutine(eventText.NewTextToDisplay(eventString));
     }
 
-    
+
 }
