@@ -65,6 +65,7 @@ public class GenericEventPlayer : EventPlayer
         {
             if (currentEventEnded)
             {
+                eventCanvas.SetActive(false);
                 advisor.AdvisorLeaveScene();
             }
         }
@@ -127,8 +128,8 @@ public class GenericEventPlayer : EventPlayer
         {
             eventString += "Decreasing ";
         }
-        eventString += currentEvent.decision1.stat2 + " By " + Mathf.Abs(currentEvent.decision1.stat2Amount);
-
+        eventString += currentEvent.decision1.stat2 + " By " + Mathf.Abs(currentEvent.decision1.stat2Amount) + "\n";
+        eventString += "Press space to continue...";
         StartCoroutine(eventText.NewTextToDisplay(eventString));
     }
 
@@ -158,8 +159,8 @@ public class GenericEventPlayer : EventPlayer
         {
             eventString += "Decreasing ";
         }
-        eventString += currentEvent.decision2.stat2 + " By " + Mathf.Abs(currentEvent.decision2.stat2Amount);
-
+        eventString += currentEvent.decision2.stat2 + " By " + Mathf.Abs(currentEvent.decision2.stat2Amount) + "\n";
+        eventString += "Press space to continue...";
         StartCoroutine(eventText.NewTextToDisplay(eventString));
     }
 
