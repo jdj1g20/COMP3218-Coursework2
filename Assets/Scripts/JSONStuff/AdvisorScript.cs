@@ -21,7 +21,7 @@ public class AdvisorScript : MonoBehaviour
 
     public void AdvisorEnterScene()
     {
-        transform.localScale = new Vector3(46.0935f, 41.778f, 1);
+        transform.localScale = new Vector3(102.0827f, 92.52522f, 2.214688f);
         gameObject.SetActive(true);
         fadeIn = true;
         spacePressed = false;
@@ -34,7 +34,7 @@ public class AdvisorScript : MonoBehaviour
 
     public void AdvisorLeaveScene()
     {
-        transform.localScale = new Vector3(-46.0935f, 41.778f, 1);
+        transform.localScale = new Vector3(-102.0827f, 92.52522f, 2.214688f);
         fadeOut = true;
         spacePressed = false;
     }
