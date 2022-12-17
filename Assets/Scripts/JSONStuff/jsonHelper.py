@@ -76,32 +76,47 @@ widgets.append(sfx2)
 def getJson():
     j = {
             "description": retrieve_input(description),
-            "advisor": advisor.get(),
-            "SFX": sfx.get(),
+            "advisor":op1.get(),
+            "SFX": s.get(),
             "decision1Desc": retrieve_input(decision1but),
             "decision1": {
                 "description": retrieve_input(decision1desc),
-                "stat1": stat11.get(),
+                "stat1": s11.get(),
                 "stat1Amount": retrieve_input(stat11amount),
-                "stat2": stat12.get(),
+                "stat2": s12.get(),
                 "stat2Amount": retrieve_input(stat12amount),
-                "SFX": sfx1.get()
+                "SFX": s1.get()
             },
             "decision2Desc": retrieve_input(decision2but),
             "decision2": {
                 "description": retrieve_input(decision2desc),
-                "stat1": stat21.get(),
+                "stat1": s21.get(),
                 "stat1Amount": retrieve_input(stat21amount),
-                "stat2": stat22.get(),
+                "stat2": s22.get(),
                 "stat2Amount": retrieve_input(stat22amount),
-                "SFX": sfx2.get()
+                "SFX": s2.get()
             }
     }
     return j
 
+def getJsonSec():
+    temp = getJson()
+    print(temp)
+    with open("secondary.json","w") as secondary:
+        json.dump(temp,secondary)
+    secondary.close()
 
-bgen = Button(command=getJson,text="Generate")
-widgets.append(bgen)
+def getJsonMain():
+    temp = getJson()
+    with open("primary.json","w") as primary:
+        json.dump(temp,primary)
+    primary.close()
+
+sgen = Button(command=getJsonSec,text="Generate Secondary")
+widgets.append(sgen)
+
+mgen = Button(command=getJsonMain,text="Generate Main")
+widgets.append(mgen)
 
 i = 0
 for w in widgets:
