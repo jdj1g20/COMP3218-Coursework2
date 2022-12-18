@@ -1,5 +1,6 @@
 from tkinter import *
 import json
+import os
 window=Tk()
 # add widgets here
 # make sure to link to the narrative
@@ -97,20 +98,22 @@ def getJson():
                 "SFX": s2.get()
             }
     }
-    return j
+    return json.dumps(j)
 
 def getJsonSec():
     temp = getJson()
     print(temp)
     with open("secondary.json","w") as secondary:
         json.dump(temp,secondary)
-    secondary.close()
+
 
 def getJsonMain():
     temp = getJson()
     with open("primary.json","w") as primary:
         json.dump(temp,primary)
-    primary.close()
+
+
+
 
 sgen = Button(command=getJsonSec,text="Generate Secondary")
 widgets.append(sgen)
