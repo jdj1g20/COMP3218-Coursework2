@@ -6,6 +6,7 @@ public class MainGameLoopScript : MonoBehaviour
 {
     public TextAsset genericEventsJSON;
     public TextAsset mainEventsJSON;
+    public KingdomStatsScript kingdomStats;
     Events genericEvents;
     Events mainEvents;
 
@@ -14,6 +15,8 @@ public class MainGameLoopScript : MonoBehaviour
     void Start()
     {
         Debug.Log("Starting Main Game Loop");
+        Debug.Log("Setting Start Stats");
+        kingdomStats.UpdateStatSprites();
         Debug.Log("Importing Generic Events");
         genericEvents = EventJSONReader.GenerateEventsFromJSON(genericEventsJSON);
 

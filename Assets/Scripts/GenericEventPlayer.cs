@@ -20,6 +20,7 @@ public class GenericEventPlayer : EventPlayer
     float waitAfterDescription = 1f;
     public bool initialEventDescriptionPlaying = false;
     public bool currentEventEnded = false;
+    public KingdomStatsScript kingdomStats;
 
     void Start()
     {
@@ -65,6 +66,7 @@ public class GenericEventPlayer : EventPlayer
         {
             if (currentEventEnded)
             {
+                kingdomStats.UpdateStatSprites();
                 eventCanvas.SetActive(false);
                 advisor.AdvisorLeaveScene();
             }
@@ -130,6 +132,9 @@ public class GenericEventPlayer : EventPlayer
         }
         eventString += currentEvent.decision1.stat2 + " By " + Mathf.Abs(currentEvent.decision1.stat2Amount) + "\n";
         eventString += "Press space to continue...";
+        
+        kingdomStats.ChangeStats(currentEvent.decision1.stat1, currentEvent.decision1.stat1Amount);
+        kingdomStats.ChangeStats(currentEvent.decision1.stat2, currentEvent.decision1.stat2Amount);
         StartCoroutine(eventText.NewTextToDisplay(eventString));
     }
 
@@ -161,6 +166,10 @@ public class GenericEventPlayer : EventPlayer
         }
         eventString += currentEvent.decision2.stat2 + " By " + Mathf.Abs(currentEvent.decision2.stat2Amount) + "\n";
         eventString += "Press space to continue...";
+
+        kingdomStats.ChangeStats(currentEvent.decision2.stat1, currentEvent.decision2.stat1Amount);
+        kingdomStats.ChangeStats(currentEvent.decision2.stat2, currentEvent.decision2.stat2Amount);
+
         StartCoroutine(eventText.NewTextToDisplay(eventString));
     }
 
