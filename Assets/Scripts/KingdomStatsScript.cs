@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class KingdomStatsScript : MonoBehaviour
 {
@@ -10,8 +11,23 @@ public class KingdomStatsScript : MonoBehaviour
     SpriteRenderer militarySpriteRenderer, economySpriteRenderer, diplomacySpriteRenderer, approvalSpriteRenderer;
     [SerializeField]
     List<StatType> statList;
+    [SerializeField]
+    TextMeshProUGUI militaryT, economyT, diplomacyT, approvalT;
 
-    
+    // Start is called before the first frame update
+    void Awake()
+    {
+        Debug.Log("Initialising StatList");
+        militaryT.SetText("5");
+        economyT.SetText("5");
+        diplomacyT.SetText("5");
+        approvalT.SetText("5");
+        statList = new List<StatType>() {
+            new StatType("military", 5, militarySprites, militarySpriteRenderer, militaryT),
+            new StatType("economy", 5, economySprites, economySpriteRenderer, economyT),
+            new StatType("diplomacy", 5, diplomacySprites, diplomacySpriteRenderer, diplomacyT),
+            new StatType("approval", 5, approvalSprites, approvalSpriteRenderer, approvalT)};
+    }
     
     
     public void ChangeStats(string stat, int Amount){
@@ -29,19 +45,12 @@ public class KingdomStatsScript : MonoBehaviour
         foreach (var stat in statList)
         {
             stat.spriteRenderer.sprite = stat.spriteList[stat.statAmount];
-             
+            stat.statNumber.SetText(stat.statAmount.ToString());
         }
+
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        statList = new List<StatType>() {
-            new StatType("military", 5, militarySprites, militarySpriteRenderer),
-            new StatType("economy", 5, economySprites, economySpriteRenderer),
-            new StatType("diplomacy", 5, diplomacySprites, diplomacySpriteRenderer),
-            new StatType("approval", 5, approvalSprites, approvalSpriteRenderer)};
-    }
+    
 
     // Update is called once per frame
     void Update()

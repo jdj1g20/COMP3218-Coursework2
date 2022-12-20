@@ -14,8 +14,13 @@ public class MainGameLoopScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartGameLoop();
+    }
+
+    private void StartGameLoop() {
         Debug.Log("Starting Main Game Loop");
         Debug.Log("Setting Start Stats");
+        
         kingdomStats.UpdateStatSprites();
         Debug.Log("Importing Generic Events");
         genericEvents = EventJSONReader.GenerateEventsFromJSON(genericEventsJSON);
