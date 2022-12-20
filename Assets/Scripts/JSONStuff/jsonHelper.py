@@ -24,31 +24,43 @@ def retrieve_input(textBox):
 
 
 widgets = []
+labs = []
 h = 1
 m = 3
 w = 40
 
 description = Text(height = h*m, width=w)
+labs.append(Label(text="Description"))
 op1=StringVar()
 advisor = OptionMenu(window,op1,*advisors)
+labs.append(Label(text="Ddvisor"))
 s=StringVar()
 sfx = OptionMenu(window,s,*sounds)
+labs.append(Label(text="sfx"))
 decisionDesc = Text(height = h*m, width=w)
+labs.append(Label(text="descisionDesc"))
 widgets.append(description)
 widgets.append(advisor)
 widgets.append(sfx)
 widgets.append(decisionDesc)
 
 decision1desc = Text(height = h*m, width=w)
+labs.append(Label(text="desc1Desc"))
 decision1but = Text(height = h, width=w)
+labs.append(Label(text="desc1Outcome"))
 s11=StringVar()
 stat11 = OptionMenu(window,s11,*properties)
+labs.append(Label(text="stat11"))
 stat11amount = Text(height = h, width=w)
+labs.append(Label(text="stat11amount"))
 s12 = StringVar()
 stat12 = OptionMenu(window,s12,*properties)
+labs.append(Label(text="stat12"))
 stat12amount = Text(height = h, width=w)
+labs.append(Label(text="stat12amount"))
 s1 = StringVar()
 sfx1 = OptionMenu(window,s1,*sounds)
+labs.append(Label(text="sfx1"))
 widgets.append(decision1desc)
 widgets.append(decision1but)
 widgets.append(stat11)
@@ -58,15 +70,22 @@ widgets.append(stat12amount)
 widgets.append(sfx1)
 
 decision2desc = Text(height = h*m, width=w)
+labs.append(Label(text="desc2Desc"))
 decision2but = Text(height = h, width=w)
+labs.append(Label(text="desc2Outcome"))
 s21 = StringVar()
 stat21 = OptionMenu(window,s21,*properties)
+labs.append(Label(text="stat21"))
 stat21amount = Text(height = h, width=w)
+labs.append(Label(text="stat21amount"))
 s22 = StringVar()
 stat22 = OptionMenu(window,s22,*properties)
+labs.append(Label(text="stat22"))
 stat22amount = Text(height = h, width=w)
+labs.append(Label(text="stat22amount"))
 s2 = StringVar()
 sfx2 = OptionMenu(window,s2,*sounds)
+labs.append(Label(text="sfx2"))
 widgets.append(decision2desc)
 widgets.append(decision2but)
 widgets.append(stat21)
@@ -130,8 +149,11 @@ mgen = Button(command=getJsonMain,text="Generate Main")
 widgets.append(mgen)
 
 i = 0
+
 for w in widgets:
-    w.grid(row=i,column=0)
+    w.grid(row=i,column=1)
+    if(i < len(labs)):
+        labs[i].grid(row=i,column=0)
     i = i + 1
 
 window.title('Hello Python')
