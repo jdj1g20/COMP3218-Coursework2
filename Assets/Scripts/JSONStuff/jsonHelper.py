@@ -1,6 +1,7 @@
 from tkinter import *
 import json
 import os
+
 window=Tk()
 # add widgets here
 # make sure to link to the narrative
@@ -101,19 +102,26 @@ def getJson():
     return json.dumps(j)
 
 def getJsonSec():
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, 'secondary.json')
     temp = getJson()
-    print(temp)
-    with open("secondary.json","w") as secondary:
-        json.dump(temp,secondary)
-
+    data = []
+    with open(filename) as secondary0:
+        data = json.load(secondary0)
+    with open(filename,"w") as secondary:
+        data.append(temp)
+        json.dump(data,secondary)
 
 def getJsonMain():
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, 'primary.json')
     temp = getJson()
-    with open("primary.json","w") as primary:
-        json.dump(temp,primary)
-
-
-
+    data = []
+    with open(filename) as prim0:
+        data = json.load(prim0)
+    with open(filename,"w") as prim:
+        data.append(temp)
+        json.dump(data,prim)
 
 sgen = Button(command=getJsonSec,text="Generate Secondary")
 widgets.append(sgen)
