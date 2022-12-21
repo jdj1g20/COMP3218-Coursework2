@@ -32,7 +32,7 @@ public class TextRevealScript : MonoBehaviour
                 break;
 
             }
-            yield return new WaitForSeconds(0.10f);
+            yield return new WaitForSeconds(0.08f);
 
         }
         Debug.Log("Text Ended");

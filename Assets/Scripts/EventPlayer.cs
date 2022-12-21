@@ -11,4 +11,6 @@ public abstract class EventPlayer : MonoBehaviour
     public abstract IEnumerator StartInitialEventDescription();
     public abstract void TextEnded();
 
+    public abstract void EventEnded();
+
 }

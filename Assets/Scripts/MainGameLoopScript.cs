@@ -9,12 +9,22 @@ public class MainGameLoopScript : MonoBehaviour
     public KingdomStatsScript kingdomStats;
     Events genericEvents;
     Events mainEvents;
-
+    List<Event> eventsOrder;
+    int eventNo = 0;
     public GenericEventPlayer genericEventPlayer;
     // Start is called before the first frame update
     void Start()
     {
         StartGameLoop();
+    }
+
+    public List<Event> ConstructChronology() {
+        List<Event> eventsList = new List<Event>() 
+        {
+            genericEvents.events[0], genericEvents.events[1]
+        };
+
+        return eventsList; 
     }
 
     private void StartGameLoop() {
@@ -26,10 +36,13 @@ public class MainGameLoopScript : MonoBehaviour
         genericEvents = EventJSONReader.GenerateEventsFromJSON(genericEventsJSON);
 
         // Play back story
-        Debug.Log("genericEvents.events[0].description");
-        Debug.Log(genericEvents.events[0].description);
+        
+        // Construct eventsOrder with generic and main events:
+        eventsOrder = ConstructChronology();
+
         // Three Generic Events
-        genericEventPlayer.PlayEvent(genericEvents.events[0]);
+        genericEventPlayer.PlayEvent(eventsOrder[eventNo]);
+        eventNo++;
         // One Main Story Event
 
         // Three Generic Events
@@ -49,9 +62,14 @@ public class MainGameLoopScript : MonoBehaviour
         // One Main Story Event
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+    public void EventEnded() {
+        if (eventNo < eventsOrder.Count) {
+            Debug.Log("Starting next event");
+            genericEventPlayer.PlayEvent(eventsOrder[eventNo]);
+            eventNo++;
+        } else {
+            Debug.Log("Reached end of event list");
+        }
+        
     }
 }

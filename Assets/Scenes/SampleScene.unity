@@ -622,8 +622,7 @@ MonoBehaviour:
   eventPlayer: {fileID: 1774782563}
   fadeIn: 0
   fadeOut: 0
-  blackToWhiteTransition: 0
-  whiteToBlackTransition: 0
+  spacePressed: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,6 +1018,7 @@ GameObject:
   - component: {fileID: 977389208}
   - component: {fileID: 977389207}
   - component: {fileID: 977389206}
+  - component: {fileID: 977389209}
   m_Layer: 5
   m_Name: Option1Button
   m_TagString: Untagged
@@ -1141,6 +1141,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977389204}
   m_CullTransparentMesh: 1
+--- !u!114 &977389209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977389204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5357d5420023ea44fae4f867c01b84ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  military: {fileID: 1984807559}
+  economy: {fileID: 2033625407}
+  diplomacy: {fileID: 823731464}
+  approval: {fileID: 108434885}
+  eventPlayer: {fileID: 1774782563}
 --- !u!1 &1153900735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1808,8 @@ GameObject:
   - component: {fileID: 1509754988}
   - component: {fileID: 1509754987}
   - component: {fileID: 1509754986}
+  - component: {fileID: 1509754989}
+  - component: {fileID: 1509754990}
   m_Layer: 5
   m_Name: Option2Button
   m_TagString: Untagged
@@ -1913,6 +1932,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509754984}
   m_CullTransparentMesh: 1
+--- !u!114 &1509754989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509754984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de99b7d1bf4a7e46bb6dc0908daaa76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  military: {fileID: 1984807559}
+  economy: {fileID: 2033625407}
+  diplomacy: {fileID: 823731464}
+  approval: {fileID: 108434885}
+  eventPlayer: {fileID: 1774782563}
+--- !u!61 &1509754990
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509754984}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1584749603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,9 +2249,30 @@ MonoBehaviour:
   eventDescription: {fileID: 465366657}
   button1Description: {fileID: 1278156317}
   button2Description: {fileID: 1584749605}
+  currentEvent:
+    description: 
+    advisor: 
+    SFX: 
+    decision1:
+      description: 
+      stat1: 
+      stat1Amount: 0
+      stat2: 
+      stat2Amount: 0
+      SFX: 
+    decision1Desc: 
+    decision2:
+      description: 
+      stat1: 
+      stat1Amount: 0
+      stat2: 
+      stat2Amount: 0
+      SFX: 
+    decision2Desc: 
   initialEventDescriptionPlaying: 0
   currentEventEnded: 0
   kingdomStats: {fileID: 1828409293}
+  mainGameLoopScript: {fileID: 50198685}
 --- !u!4 &1774782564
 Transform:
   m_ObjectHideFlags: 0
