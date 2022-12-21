@@ -128,7 +128,7 @@ def getJsonSec():
     with open(filename) as secondary0:
         data = json.load(secondary0)
     with open(filename,"w") as secondary:
-        data.append(temp)
+        data['events'].append(temp)
         json.dump(data,secondary)
 
 def getJsonMain():
@@ -139,7 +139,7 @@ def getJsonMain():
     with open(filename) as prim0:
         data = json.load(prim0)
     with open(filename,"w") as prim:
-        data.append(temp)
+        data['events'].append(temp)
         json.dump(data,prim)
 
 sgen = Button(command=getJsonSec,text="Generate Secondary")
