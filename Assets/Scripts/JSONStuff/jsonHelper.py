@@ -8,8 +8,8 @@ window=Tk()
 # there should be a good reason for each property, events, mechanics 
 # events should be responsive to properties 
 
-properties = ['military','economy','approval','diplomacy']
-advisors = ['militaryA','economyA','civilA','catA']
+properties = ['military','economy','approval','diplomacy','food']
+advisors = ['militaryA','economyA','civilA','catA','foodA']
 sounds = ['bearDieWithFire','happyBearNoises','ratEatingNoises','ratPainNoise']
 
 def callback(self, P):
@@ -118,7 +118,7 @@ def getJson():
                 "SFX": s2.get()
             }
     }
-    return json.dumps(j)
+    return j
 
 def getJsonSec():
     dirname = os.path.dirname(__file__)
