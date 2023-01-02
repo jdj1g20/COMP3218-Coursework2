@@ -16,32 +16,30 @@ public class GenericEventPlayer : EventPlayer
     [SerializeField]
     TextMeshProUGUI eventDescription, button1Description, button2Description;
 
-    Event currentEvent;
+    public Event currentEvent;
     float waitAfterDescription = 1f;
     public bool initialEventDescriptionPlaying = false;
     public bool currentEventEnded = false;
     public KingdomStatsScript kingdomStats;
+    public MainGameLoopScript mainGameLoopScript;
 
-    void Start()
-    {
-        //eventText = eventDescriptionBox.GetComponent<TextRevealScript>();
-        //button1Text = button1.GetComponent<TextRevealScript>();
-        //button2Text = button2.GetComponent<TextRevealScript>();
-    }
-
+    // First method to be called
     public override void PlayEvent(Event eventToPlay)
     {
+        // Set up the currentEvent and currentEventEnded variables
         currentEvent = eventToPlay;
+        currentEventEnded = false;
         Debug.Log("Starting event");
         // Reveal Advisor
         RevealAdvisor();
-
-
-        currentEventEnded = false;
-
-
     }
 
+    private void RevealAdvisor()
+    {
+        Debug.Log("Revealing Advisor");
+        // Set advisor to currentEvent.advisor
+        advisor.AdvisorEnterScene();
+    }
     public override IEnumerator StartInitialEventDescription()
     {
         yield return (3f);
@@ -52,36 +50,34 @@ public class GenericEventPlayer : EventPlayer
         StartCoroutine(eventText.NewTextToDisplay(currentEvent.description));
     }
 
-    private void RevealAdvisor()
-    {
-        Debug.Log("Revealing Advisor");
-        // Set advisor to currentEvent.advisor
-        advisor.AdvisorEnterScene();
-        //Invoke("StartInitialEventDescription", 5f);
-    }
-
-    void Update()
+    
+    // Late update occurs after update, ensuring advisor doesn't detect space too early
+    void LateUpdate()
     {
         if (Input.GetKeyDown("space"))
         {
+            // If space is pressed and we know the event has ended, make advisor leave
             if (currentEventEnded)
             {
-                kingdomStats.UpdateStatSprites();
+                Debug.Log("EventPlayer detected space");
+                //kingdomStats.UpdateStatSprites();
                 eventCanvas.SetActive(false);
                 advisor.AdvisorLeaveScene();
             }
         }
     }
 
-
+    // Called when text has finished writing
     public override void TextEnded()
     {
         if (initialEventDescriptionPlaying)
         {
+            // If initial description was writing, reveal decisions
             RevealEventChoices();
         }
         else
         {
+            // Otherwise, the event must have ended
             currentEventEnded = true;
 
         }
@@ -89,6 +85,7 @@ public class GenericEventPlayer : EventPlayer
 
     public override void RevealEventChoices()
     {
+        // Reveal buttons and set their text
         initialEventDescriptionPlaying = false;
         button1.SetActive(true);
         button2.SetActive(true);
@@ -96,57 +93,38 @@ public class GenericEventPlayer : EventPlayer
         button2Text.text = currentEvent.decision2Desc;
     }
 
+    // If either button is selected, start their respective coroutines
     public void SelectedButton1()
     {
-        StartCoroutine(Button1Select());
+        StartCoroutine(ButtonSelect1(1));
     }
 
     public void SelectedButton2()
     {
-        StartCoroutine(Button2Select());
+        StartCoroutine(ButtonSelect1(2));
     }
-    public IEnumerator Button1Select()
-    {
-        Debug.Log("Chosen Decision 1");
-        yield return new WaitForSeconds(0.3f);
+
+    // First part of ButtonSelect
+    public IEnumerator ButtonSelect1(int button) {
+        Debug.Log("Chosen Decision " + button);
+        // Deactivate buttons
         button1.SetActive(false);
         button2.SetActive(false);
-        string eventString = currentEvent.decision1.description + "\n";
-        if (currentEvent.decision1.stat1Amount > 0)
-        {
-            eventString += "Increasing ";
-        }
-        else
-        {
-            eventString += "Decreasing ";
-        }
-        eventString += currentEvent.decision1.stat1 + " By " + Mathf.Abs(currentEvent.decision1.stat1Amount) + "\n";
-
-        if (currentEvent.decision1.stat2Amount > 0)
-        {
-            eventString += "Increasing ";
-        }
-        else
-        {
-            eventString += "Decreasing ";
-        }
-        eventString += currentEvent.decision1.stat2 + " By " + Mathf.Abs(currentEvent.decision1.stat2Amount) + "\n";
-        eventString += "Press space to continue...";
+        // Wait a small amount
+        yield return new WaitForSeconds(0.3f);
         
-        kingdomStats.ChangeStats(currentEvent.decision1.stat1, currentEvent.decision1.stat1Amount);
-        kingdomStats.ChangeStats(currentEvent.decision1.stat2, currentEvent.decision1.stat2Amount);
-        StartCoroutine(eventText.NewTextToDisplay(eventString));
+        // Call second part with correct decision
+        if (button == 1) ButtonSelect2(currentEvent.decision1);
+        else ButtonSelect2(currentEvent.decision2);
     }
 
-    public IEnumerator Button2Select()
+    // Second part of ButtonSelect
+    public void ButtonSelect2(Decision decision)
     {
-        Debug.Log("Chosen Decision 2");
-        yield return new WaitForSeconds(0.3f);
-        button1.SetActive(false);
-        button2.SetActive(false);
-
-        string eventString = currentEvent.decision2.description + "\n";
-        if (currentEvent.decision2.stat1Amount > 0)
+        // Construct event string 
+        string eventString = decision.description + "\n";
+        // Add stat numbers to event string
+        if (decision.stat1Amount > 0)
         {
             eventString += "Increasing ";
         }
@@ -154,9 +132,9 @@ public class GenericEventPlayer : EventPlayer
         {
             eventString += "Decreasing ";
         }
-        eventString += currentEvent.decision2.stat1 + " By " + Mathf.Abs(currentEvent.decision2.stat1Amount) + "\n";
+        eventString += decision.stat1 + " By " + Mathf.Abs(decision.stat1Amount) + "\n";
 
-        if (currentEvent.decision2.stat2Amount > 0)
+        if (decision.stat2Amount > 0)
         {
             eventString += "Increasing ";
         }
@@ -164,14 +142,22 @@ public class GenericEventPlayer : EventPlayer
         {
             eventString += "Decreasing ";
         }
-        eventString += currentEvent.decision2.stat2 + " By " + Mathf.Abs(currentEvent.decision2.stat2Amount) + "\n";
+        eventString += decision.stat2 + " By " + Mathf.Abs(decision.stat2Amount) + "\n";
         eventString += "Press space to continue...";
 
-        kingdomStats.ChangeStats(currentEvent.decision2.stat1, currentEvent.decision2.stat1Amount);
-        kingdomStats.ChangeStats(currentEvent.decision2.stat2, currentEvent.decision2.stat2Amount);
-
+        // Adjust kingdom stats
+        kingdomStats.ChangeStats(decision.stat1, decision.stat1Amount);
+        kingdomStats.ChangeStats(decision.stat2, decision.stat2Amount);
+        // Update kingdom stats sprites
+        kingdomStats.UpdateStatSprites();
+        // Start displaying event string 
         StartCoroutine(eventText.NewTextToDisplay(eventString));
     }
-
-
+    
+    // Event Ended function for advisor to call
+    public override void EventEnded() {
+        // Tell main game loop that event has ended
+        mainGameLoopScript.EventEnded();
+        
+    }
 }

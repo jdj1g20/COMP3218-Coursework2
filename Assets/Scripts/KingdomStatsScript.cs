@@ -32,14 +32,52 @@ public class KingdomStatsScript : MonoBehaviour
     
     public void ChangeStats(string stat, int Amount){
         if(stat == "Military") {
-            statList[0].statAmount += Amount;
+            Debug.Log("Changing Military by " + Amount);
+            
+            int newAmount = CheckStatBoundaries(statList[0], Amount);
+            StartCoroutine(ChangeStatColour(statList[0], newAmount));
         } else if(stat == "Economy") {
-            statList[1].statAmount += Amount;
+            Debug.Log("Changing Economy by " + Amount);
+            int newAmount = CheckStatBoundaries(statList[1], Amount);
+            StartCoroutine(ChangeStatColour(statList[1], newAmount));
         } else if(stat == "Diplomacy") {
-            statList[2].statAmount += Amount;
+            Debug.Log("Changing Diplomacy by " + Amount);
+            int newAmount = CheckStatBoundaries(statList[2], Amount);
+            StartCoroutine(ChangeStatColour(statList[2], newAmount));
         } else if(stat == "Approval") {
-            statList[4].statAmount += Amount;
+            Debug.Log("Changing Approval by " + Amount);
+            int newAmount = CheckStatBoundaries(statList[3], Amount);
+            StartCoroutine(ChangeStatColour(statList[3], newAmount));
         }
+    }
+
+    private int CheckStatBoundaries(StatType stat, int amount) {
+        int newStatAmount = stat.statAmount + amount;
+        int newAmount = amount;
+        if (newStatAmount > 10) {
+            Debug.Log("Stat Increasing Over 10, Setting to 10");
+            newAmount = 10 - stat.statAmount;
+            stat.statAmount = 10;
+        } else if (newStatAmount < 0) {
+            newAmount = 0 - stat.statAmount;
+            stat.statAmount = 0;
+        } else
+        {
+            stat.statAmount += amount;
+        }
+        return newAmount;
+    }
+    private IEnumerator ChangeStatColour(StatType stat, int amount) {
+        if (amount > 0) {
+            Debug.Log("Turning stat green");
+            stat.spriteRenderer.color = Color.green;
+        } else {
+            Debug.Log("Turning stat red");
+            stat.spriteRenderer.color = Color.red;
+        }
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Turning stat white");
+        stat.spriteRenderer.color = Color.white;
     }
     public void UpdateStatSprites () {
         foreach (var stat in statList)
