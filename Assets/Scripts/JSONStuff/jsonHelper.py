@@ -10,7 +10,7 @@ window=Tk()
 
 properties = ['military','economy','approval','diplomacy','food']
 advisors = ['militaryA','economyA','civilA','catA','foodA']
-sounds = ['bearDieWithFire','happyBearNoises','ratEatingNoises','ratPainNoise']
+sounds = ['bearDieWithFire','happyBearNoises','ratEatingNoises','ratPainNoise',"EconomyPlus","EconomyMinus","ApprovalPlus","ApprovalMinus","MillitaryPlus","MillitaryMinus","DiplomacyPlus","DiplomacyMinus","FoodPlus","FoodMinus"]
 
 def callback(self, P):
     if str.isdigit(P) and int(P) >= 0 and int(P) <= 10:
