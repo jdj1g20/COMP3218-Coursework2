@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class StatNumbersScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject military, economy, diplomacy, approval;
+    GameObject military, economy, diplomacy, approval, food;
     // TextMeshProUGUI militaryT, economyT, diplomacyT, approvalT;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,7 @@ public class StatNumbersScript : MonoBehaviour
         economy.SetActive(false);
         diplomacy.SetActive(false);
         approval.SetActive(false);
+        food.SetActive(false);
         // militaryT = military.GetComponent<TextMeshProUGUI>();
         // economyT = economy.GetComponent<TextMeshProUGUI>();
         // diplomacyT = diplomacy.GetComponent<TextMeshProUGUI>();
@@ -37,6 +38,7 @@ public class StatNumbersScript : MonoBehaviour
         economy.SetActive(true);
         diplomacy.SetActive(true);
         approval.SetActive(true);
+        food.SetActive(true);
     }
 
     void OnMouseExit() {
@@ -44,6 +46,7 @@ public class StatNumbersScript : MonoBehaviour
         military.SetActive(false);
         economy.SetActive(false);
         diplomacy.SetActive(false);
-        approval.SetActive(false);   
+        approval.SetActive(false); 
+        food.SetActive(false);  
     }
 }

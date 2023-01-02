@@ -6,13 +6,13 @@ using TMPro;
 public class KingdomStatsScript : MonoBehaviour
 {
     [SerializeField]
-    List<Sprite> militarySprites, economySprites, diplomacySprites, approvalSprites;
+    List<Sprite> militarySprites, economySprites, diplomacySprites, approvalSprites, foodSprites;
     [SerializeField]
-    SpriteRenderer militarySpriteRenderer, economySpriteRenderer, diplomacySpriteRenderer, approvalSpriteRenderer;
+    SpriteRenderer militarySpriteRenderer, economySpriteRenderer, diplomacySpriteRenderer, approvalSpriteRenderer, foodSpriteRenderer;
     [SerializeField]
     List<StatType> statList;
     [SerializeField]
-    TextMeshProUGUI militaryT, economyT, diplomacyT, approvalT;
+    TextMeshProUGUI militaryT, economyT, diplomacyT, approvalT, foodT;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,32 +22,38 @@ public class KingdomStatsScript : MonoBehaviour
         economyT.SetText("5");
         diplomacyT.SetText("5");
         approvalT.SetText("5");
+        foodT.SetText("5");
         statList = new List<StatType>() {
             new StatType("military", 5, militarySprites, militarySpriteRenderer, militaryT),
             new StatType("economy", 5, economySprites, economySpriteRenderer, economyT),
             new StatType("diplomacy", 5, diplomacySprites, diplomacySpriteRenderer, diplomacyT),
-            new StatType("approval", 5, approvalSprites, approvalSpriteRenderer, approvalT)};
+            new StatType("approval", 5, approvalSprites, approvalSpriteRenderer, approvalT),
+            new StatType("food", 5, foodSprites, foodSpriteRenderer, foodT)};
     }
     
     
     public void ChangeStats(string stat, int Amount){
-        if(stat == "Military") {
+        if(stat == "military") {
             Debug.Log("Changing Military by " + Amount);
             
             int newAmount = CheckStatBoundaries(statList[0], Amount);
             StartCoroutine(ChangeStatColour(statList[0], newAmount));
-        } else if(stat == "Economy") {
+        } else if(stat == "economy") {
             Debug.Log("Changing Economy by " + Amount);
             int newAmount = CheckStatBoundaries(statList[1], Amount);
             StartCoroutine(ChangeStatColour(statList[1], newAmount));
-        } else if(stat == "Diplomacy") {
+        } else if(stat == "diplomacy") {
             Debug.Log("Changing Diplomacy by " + Amount);
             int newAmount = CheckStatBoundaries(statList[2], Amount);
             StartCoroutine(ChangeStatColour(statList[2], newAmount));
-        } else if(stat == "Approval") {
+        } else if(stat == "approval") {
             Debug.Log("Changing Approval by " + Amount);
             int newAmount = CheckStatBoundaries(statList[3], Amount);
             StartCoroutine(ChangeStatColour(statList[3], newAmount));
+        } else if(stat == "food") {
+            Debug.Log("Changing Food by " + Amount);
+            int newAmount = CheckStatBoundaries(statList[4], Amount);
+            StartCoroutine(ChangeStatColour(statList[4], newAmount));
         }
     }
 

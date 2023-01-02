@@ -5,37 +5,58 @@ using UnityEngine.EventSystems;
 public class Button2HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
-    SpriteRenderer military, economy, diplomacy, approval;
+    SpriteRenderer military, economy, diplomacy, approval, food;
     [SerializeField]
     GenericEventPlayer eventPlayer;
+    [SerializeField]
+    MainEventPlayer mainEventPlayer;
+    [SerializeField]
+    MainGameLoopScript mainGameLoopScript;
     
+    [SerializeField]
+    ButtonSelectScript buttonSelectScript;
     public void OnPointerEnter(PointerEventData eventData) {
         Debug.Log("Mouse Enter Button2");
-        Event currentEvent = eventPlayer.currentEvent;
-        string stat1 = currentEvent.decision2.stat1;
-        string stat2 = currentEvent.decision2.stat2;
-        ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+        if (mainGameLoopScript.playingMainEvent) {
+            EventMain currentEvent = mainEventPlayer.currentEvent;
+            string stat1 = currentEvent.decision2.stat1;
+            string stat2 = currentEvent.decision2.stat2;
+            ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+        } else {
+            Event currentEvent = eventPlayer.currentEvent;
+            string stat1 = currentEvent.decision2.stat1;
+            string stat2 = currentEvent.decision2.stat2;
+            ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+        }
         
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         Debug.Log("Mouse Exit Button2");
-        Event currentEvent = eventPlayer.currentEvent;
-        string stat1 = currentEvent.decision2.stat1;
-        string stat2 = currentEvent.decision2.stat2;
-        ChangeStatColourWhite(CheckStat(stat1), CheckStat(stat2));
-        
+        if (mainGameLoopScript.playingMainEvent) {
+            EventMain currentEvent = mainEventPlayer.currentEvent;
+            string stat1 = currentEvent.decision2.stat1;
+            string stat2 = currentEvent.decision2.stat2;
+            ChangeStatColourWhite(CheckStat(stat1), CheckStat(stat2));
+        } else {
+            Event currentEvent = eventPlayer.currentEvent;
+            string stat1 = currentEvent.decision2.stat1;
+            string stat2 = currentEvent.decision2.stat2;
+            ChangeStatColourWhite(CheckStat(stat1), CheckStat(stat2));
+        }
     }
 
     private SpriteRenderer CheckStat(string stat) {
-        if (stat == "Military") {
+        if (stat == "military") {
             return military;
-        } else if (stat == "Economy") {
+        } else if (stat == "economy") {
             return economy;
-        } else if (stat == "Diplomacy") {
+        } else if (stat == "diplomacy") {
             return diplomacy;
-        } else if (stat == "Approval") {
+        } else if (stat == "approval") {
             return approval;
+        } else if (stat == "food") {
+            return food;
         }
         Debug.LogError("Can't find Stat (Button1HoverScript)");
         return null;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class GenericEventPlayer : EventPlayer
+public class MainEventPlayer : MonoBehaviour
 {
     [SerializeField]
     AdvisorScript advisor;
@@ -16,7 +16,7 @@ public class GenericEventPlayer : EventPlayer
     [SerializeField]
     TextMeshProUGUI eventDescription, button1Description, button2Description;
 
-    public Event currentEvent;
+    public EventMain currentEvent;
     float waitAfterDescription = 1f;
     public bool initialEventDescriptionPlaying = false;
     public bool currentEventEnded = false;
@@ -24,7 +24,7 @@ public class GenericEventPlayer : EventPlayer
     public MainGameLoopScript mainGameLoopScript;
 
     // First method to be called
-    public override void PlayEvent(Event eventToPlay)
+    public void PlayEvent(EventMain eventToPlay)
     {
         // Set up the currentEvent and currentEventEnded variables
         currentEvent = eventToPlay;
@@ -38,16 +38,16 @@ public class GenericEventPlayer : EventPlayer
     {
         Debug.Log("Revealing Advisor");
         // Set advisor to currentEvent.advisor
-        advisor.AdvisorEnterScene(true);
+        advisor.AdvisorEnterScene(false);
     }
-    public override IEnumerator StartInitialEventDescription()
+    public IEnumerator StartInitialEventDescription()
     {
         yield return (3f);
         eventCanvas.SetActive(true);
         button1.SetActive(false);
         button2.SetActive(false);
         initialEventDescriptionPlaying = true;
-        StartCoroutine(eventText.NewTextToDisplay(currentEvent.description, true));
+        StartCoroutine(eventText.NewTextToDisplay(currentEvent.description, false));
     }
 
     
@@ -57,7 +57,7 @@ public class GenericEventPlayer : EventPlayer
         if (Input.GetKeyDown("space"))
         {
             // If space is pressed and we know the event has ended, make advisor leave
-            if (currentEventEnded && mainGameLoopScript.playingGenericEvent)
+            if (currentEventEnded)
             {
                 Debug.Log("EventPlayer detected space");
                 //kingdomStats.UpdateStatSprites();
@@ -68,7 +68,7 @@ public class GenericEventPlayer : EventPlayer
     }
 
     // Called when text has finished writing
-    public override void TextEnded()
+    public void TextEnded()
     {
         if (initialEventDescriptionPlaying)
         {
@@ -83,7 +83,7 @@ public class GenericEventPlayer : EventPlayer
         }
     }
 
-    public override void RevealEventChoices()
+    public void RevealEventChoices()
     {
         // Reveal buttons and set their text
         initialEventDescriptionPlaying = false;
@@ -151,13 +151,13 @@ public class GenericEventPlayer : EventPlayer
         // Update kingdom stats sprites
         kingdomStats.UpdateStatSprites();
         // Start displaying event string 
-        StartCoroutine(eventText.NewTextToDisplay(eventString, true));
+        StartCoroutine(eventText.NewTextToDisplay(eventString, false));
     }
     
     // Event Ended function for advisor to call
-    public override void EventEnded() {
+    public void EventEnded() {
         // Tell main game loop that event has ended
         mainGameLoopScript.EventEnded();
         
-    }
+    }    
 }

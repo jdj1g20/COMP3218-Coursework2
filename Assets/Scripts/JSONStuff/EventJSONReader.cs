@@ -19,7 +19,7 @@ public static class EventJSONReader
             //Debug.Log("Event Decision 1 Button Desc: " + even.decision1Desc);
             //Debug.Log("Event Decision 2 Button Desc: " + even.decision2Desc);
 
-            // Debug.Log("Event Decision 1: " + even.decision1.description);
+            Debug.Log("Event Decision 1: " + even.decision1.description);
             // Debug.Log("Event Decision 1 stat1: " + even.decision1.stat1);
             // Debug.Log("Event Decision 1 stat1Amount: " + even.decision1.stat1Amount);
             // Debug.Log("Event Decision 1 stat2: " + even.decision1.stat2);

@@ -6,20 +6,25 @@ public class AdvisorScript : MonoBehaviour
 {
     [SerializeField]
     EventPlayer eventPlayer;
+    [SerializeField]
+    MainEventPlayer mainEventPlayer;
     SpriteRenderer sprite;
     public bool fadeIn = false;
     public bool fadeOut = false;
     
     public bool spacePressed = false;
     float speed = 0.2f;
+
+    public bool isGeneric = false;
     // Start is called before the first frame update
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    public void AdvisorEnterScene()
+    public void AdvisorEnterScene(bool isGeneric)
     {
+        this.isGeneric = isGeneric;
         // Set advisor to face king
         transform.localScale = new Vector3(102.0827f, 92.52522f, 2.214688f);
         // Set advisor to active
@@ -32,7 +37,8 @@ public class AdvisorScript : MonoBehaviour
     private void AdvisorEnteredScene()
     {
         // Call eventPlayer to start reading event description
-        StartCoroutine(eventPlayer.StartInitialEventDescription());
+        if (isGeneric) StartCoroutine(eventPlayer.StartInitialEventDescription());
+        else StartCoroutine(mainEventPlayer.StartInitialEventDescription());
     }
 
     public void AdvisorLeaveScene()
@@ -50,7 +56,8 @@ public class AdvisorScript : MonoBehaviour
         // Set advisor to inactive
         gameObject.SetActive(false);
         // End of scene
-        eventPlayer.EventEnded();
+        if (isGeneric) eventPlayer.EventEnded();
+        else mainEventPlayer.EventEnded();
     }
 
 

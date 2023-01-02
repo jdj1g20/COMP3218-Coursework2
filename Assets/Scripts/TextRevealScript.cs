@@ -6,10 +6,12 @@ public class TextRevealScript : MonoBehaviour
 {
     [SerializeField]
     EventPlayer eventPlayer;
+    [SerializeField]
+    MainEventPlayer mainEventPlayer;
     private TextMeshProUGUI text;
     private bool spaceDetected = false;
 
-    public IEnumerator NewTextToDisplay(string textToDisplay)
+    public IEnumerator NewTextToDisplay(string textToDisplay, bool isGeneric)
     {
         spaceDetected = false;
 
@@ -36,7 +38,8 @@ public class TextRevealScript : MonoBehaviour
 
         }
         Debug.Log("Text Ended");
-        eventPlayer.TextEnded();
+        if(isGeneric) eventPlayer.TextEnded();
+        else mainEventPlayer.TextEnded();
     }
 
     void Update()
