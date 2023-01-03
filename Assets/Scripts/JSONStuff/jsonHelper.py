@@ -10,7 +10,7 @@ window=Tk()
 
 properties = ['military','economy','approval','diplomacy','food']
 advisors = ['militaryA','economyA','civilA','catA','foodA']
-sounds = ['bearDieWithFire','happyBearNoises','ratEatingNoises','ratPainNoise',"EconomyPlus","EconomyMinus","ApprovalPlus","ApprovalMinus","MillitaryPlus","MillitaryMinus","DiplomacyPlus","DiplomacyMinus","FoodPlus","FoodMinus"]
+sounds = ['bearDieWithFire','happyBearNoises','ratEatingNoises','ratPainNoise',"EconomyPlus","EconomyMinus","ApprovalPlus","ApprovalMinus","MillitaryPlus","MillitaryMinus","DiplomacyPlus","DiplomacyMinus","FoodPlus","FoodMinus",""]
 
 def callback(self, P):
     if str.isdigit(P) and int(P) >= 0 and int(P) <= 10:
@@ -99,18 +99,18 @@ def getJson():
             "description": retrieve_input(description),
             "advisor":op1.get(),
             "SFX": s.get(),
-            "decision1Desc": retrieve_input(decision1but),
+            "decision1Desc": retrieve_input(decision1desc),
             "decision1": {
-                "description": retrieve_input(decision1desc),
+                "description": retrieve_input(decision1but),
                 "stat1": s11.get(),
                 "stat1Amount": retrieve_input(stat11amount),
                 "stat2": s12.get(),
                 "stat2Amount": retrieve_input(stat12amount),
                 "SFX": s1.get()
             },
-            "decision2Desc": retrieve_input(decision2but),
+            "decision2Desc": retrieve_input(decision2desc),
             "decision2": {
-                "description": retrieve_input(decision2desc),
+                "description": retrieve_input(decision2but),
                 "stat1": s21.get(),
                 "stat1Amount": retrieve_input(stat21amount),
                 "stat2": s22.get(),

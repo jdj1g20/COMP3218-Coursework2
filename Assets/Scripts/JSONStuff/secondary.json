@@ -1,1 +1,119 @@
-{"events": [{"description": "The dam builders are threatening to go on strike if their working conditions are not improved.", "advisor": "civilA", "SFX": "", "decision1Desc": "The dam builders happily got back to work after a feast on the royal cheese supplies.", "decision1": {"description": "Let them eat cheese!", "stat1": "approval", "stat1Amount": "2", "stat2": "food", "stat2Amount": "-1", "SFX": "ApprovalPlus"}, "decision2Desc": "The ring leaders were executed and the dam builders quickly got back to their craft.", "decision2": {"description": "Send the army in to make an example of the troublemakers.", "stat1": "economy", "stat1Amount": "-2", "stat2": "economy", "stat2Amount": "1", "SFX": "ApprovalMinus"}}, {"description": "There is an outbreak of deadly rat flu in the capital.", "advisor": "economyA", "SFX": "ApprovalMinus", "decision1Desc": "At a price, the dog healers saved the city from the worst of the flu.", "decision1": {"description": "Pay foreign dogctors to treat the population.", "stat1": "approval", "stat1Amount": "2", "stat2": "economy", "stat2Amount": "-2", "SFX": "ApprovalPlus"}, "decision2Desc": "There was an exodus from the capital leaving it without workers to tend to the economy.", "decision2": {"description": "Round up and execute any rat that sneezes.", "stat1": "military", "stat1Amount": "1", "stat2": "economy", "stat2Amount": "-2", "SFX": "EconomyMinus"}}, {"description": "The price of cheese has skyrocketed as the humans have stopped littering.", "advisor": "economyA", "SFX": "ApprovalMinus", "decision1Desc": "The rats rejoicing in your name.", "decision1": {"description": "Open your private collection to the needy.", "stat1": "approval", "stat1Amount": "2", "stat2": "food", "stat2Amount": "-1", "SFX": "ApprovalPlus"}, "decision2Desc": "Food riots in the capital led to a reduction in the population and lowered the demand for food.", "decision2": {"description": "Tax the cheese, the population was getting out of control anyway.", "stat1": "approval", "stat1Amount": "-2", "stat2": "food", "stat2Amount": "1", "SFX": "EconomyMinus"}}, {"description": "Arrange a wedding with the rich princess of the lands foreign.", "advisor": "economyA", "SFX": "ApprovalMinus", "decision1Desc": "Your subjects disapprove but your coffers overflow.", "decision1": {"description": "Let us share love and land!", "stat1": "approval", "stat1Amount": "-1", "stat2": "economy", "stat2Amount": "2", "SFX": "EconomyPlus"}, "decision2Desc": "Your people rejoice at your commitment to the empire.", "decision2": {"description": "I would never abandon my rats!", "stat1": "approval", "stat1Amount": "2", "stat2": "economy", "stat2Amount": "-1", "SFX": "EconomyMinus"}}, {"description": "Open the borders to the merchants of the cat and dog trade caravans.", "advisor": "economyA", "SFX": "ApprovalMinus", "decision1Desc": "Your military becomes overwhelmed by the influx of outsiders but the empire prospers.", "decision1": {"description": "Let gold flow into the empire!", "stat1": "military", "stat1Amount": "-2", "stat2": "economy", "stat2Amount": "1", "SFX": "MillitaryMinus"}, "decision2Desc": "Your generals approve but at the price of growing your coffers.", "decision2": {"description": "I would not take their tacky wares in 1000 years!", "stat1": "military", "stat1Amount": "2", "stat2": "economy", "stat2Amount": "-1", "SFX": "EconomyMinus"}}]}
+{
+    "events":[
+       {
+          "description":"The dam builders are threatening to go on strike if their working conditions are not improved.",
+          "advisor":"civilA",
+          "SFX":"",
+          "decision1Desc":"Let them eat cheese!",
+          "decision1":{
+             "description":"The dam builders happily got back to work after a feast on the royal cheese supplies.",
+             "stat1":"approval",
+             "stat1Amount":"2",
+             "stat2":"food",
+             "stat2Amount":"-1",
+             "SFX":"ApprovalPlus"
+          },
+          "decision2Desc":"Send the army in to make an example of the troublemakers.",
+          "decision2":{
+             "description":"The ring leaders were executed and the dam builders quickly got back to their craft.",
+             "stat1":"economy",
+             "stat1Amount":"-2",
+             "stat2":"economy",
+             "stat2Amount":"1",
+             "SFX":"ApprovalMinus"
+          }
+       },
+       {
+          "description":"There is an outbreak of deadly rat flu in the capital.",
+          "advisor":"economyA",
+          "SFX":"ApprovalMinus",
+          "decision1Desc":"Pay foreign dogctors to treat the population.",
+          "decision1":{
+             "description":"At a price, the dog healers saved the city from the worst of the flu.",
+             "stat1":"approval",
+             "stat1Amount":"2",
+             "stat2":"economy",
+             "stat2Amount":"-2",
+             "SFX":"ApprovalPlus"
+          },
+          "decision2Desc":"Round up and execute any rat that sneezes.",
+          "decision2":{
+             "description":"There was an exodus from the capital leaving it without workers to tend to the economy.",
+             "stat1":"military",
+             "stat1Amount":"1",
+             "stat2":"economy",
+             "stat2Amount":"-2",
+             "SFX":"EconomyMinus"
+          }
+       },
+       {
+          "description":"The price of cheese has skyrocketed as the humans have stopped littering.",
+          "advisor":"economyA",
+          "SFX":"ApprovalMinus",
+          "decision1Desc":"Open your private collection to the needy.",
+          "decision1":{
+             "description":"The rats rejoicing in your name.",
+             "stat1":"approval",
+             "stat1Amount":"2",
+             "stat2":"food",
+             "stat2Amount":"-1",
+             "SFX":"ApprovalPlus"
+          },
+          "decision2Desc":"Tax the cheese, the population was getting out of control anyway.",
+          "decision2":{
+             "description":"Food riots in the capital led to a reduction in the population and lowered the demand for food.",
+             "stat1":"approval",
+             "stat1Amount":"-2",
+             "stat2":"food",
+             "stat2Amount":"1",
+             "SFX":"EconomyMinus"
+          }
+       },
+       {
+          "description":"Arrange a wedding with the rich princess of the lands foreign.",
+          "advisor":"economyA",
+          "SFX":"ApprovalMinus",
+          "decision1Desc":"Let us share love and land!",
+          "decision1":{
+             "description":"Your subjects disapprove but your coffers overflow.",
+             "stat1":"approval",
+             "stat1Amount":"-1",
+             "stat2":"economy",
+             "stat2Amount":"2",
+             "SFX":"EconomyPlus"
+          },
+          "decision2Desc":"I would never abandon my rats!",
+          "decision2":{
+             "description":"Your people rejoice at your commitment to the empire.",
+             "stat1":"approval",
+             "stat1Amount":"2",
+             "stat2":"economy",
+             "stat2Amount":"-1",
+             "SFX":"EconomyMinus"
+          }
+       },
+       {
+          "description":"Open the borders to the merchants of the cat and dog trade caravans.",
+          "advisor":"economyA",
+          "SFX":"ApprovalMinus",
+          "decision1Desc":"Let gold flow into the empire!",
+          "decision1":{
+             "description":"Your military becomes overwhelmed by the influx of outsiders but the empire prospers.",
+             "stat1":"military",
+             "stat1Amount":"-2",
+             "stat2":"economy",
+             "stat2Amount":"1",
+             "SFX":"MillitaryMinus"
+          },
+          "decision2Desc":"I would not take their tacky wares in 1000 years!",
+          "decision2":{
+             "description":"Your generals approve but at the price of growing your coffers.",
+             "stat1":"military",
+             "stat1Amount":"2",
+             "stat2":"economy",
+             "stat2Amount":"-1",
+             "SFX":"EconomyMinus"
+          }
+       }
+    ]
+ }
