@@ -28,7 +28,7 @@
             }
         },
         {
-            "description": "Your highness, King Meowthew has sent me with a message. He has uncovered a malicious plan by Purrcival to steal his throne. He proposes to purchase some of your weapons to bolster his military and help him arrest Purrcival before this plot gets out of hand.",
+            "description": "Your highness, King Meowthew has sent me with a message. He has uncovered a malicious plot by Purrcival to steal his throne. He proposes to purchase some of your weapons to bolster his military and help him arrest Purrcival before this plan gets out of hand.",
             "advisor": "catA",
             "SFX": "battleSound",
             "decision1Desc": "We will send the weapons we can spare.",
@@ -109,7 +109,7 @@
             }
         },
 	    {
-            "description": "My lord, we have received a message from \"King Purrcival\" claiming that he did what had to be done for the good of the Cat Kingdom. He suggests opening up trade routes between our two nations to welcome a new age of prosperity.",
+            "description": "My lord, we have received a message from a newly crowned \"King Purrcival\" claiming that Meowthew has been disposed of and that the Cat Kingdom is now his to rule. He suggests opening up trade routes between our two nations to welcome a new age of prosperity.",
             "advisor": "economyA",
             "SFX": "",
             "decision1Desc": "Trade routes sounds like a great idea!",
@@ -150,7 +150,7 @@
                 "SFX": ""
 
             },
-            "decision2Desc": "We will not negotiate with a regicide!",
+            "decision2Desc": "I have changed my mind, we will not support him.",
             "decision2Next": 12,
             "decision2": {
                 "description": "Without our help, Purrcival's forces were outnumbered by King Meowthew's soldiers. Purrcival's forces have been routed and he has been taken captive.",

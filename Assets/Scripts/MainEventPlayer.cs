@@ -22,6 +22,8 @@ public class MainEventPlayer : MonoBehaviour
     public bool currentEventEnded = false;
     public KingdomStatsScript kingdomStats;
     public MainGameLoopScript mainGameLoopScript;
+    public int nextMainEvent;
+    public bool finalEvent = false;
 
     // First method to be called
     public void PlayEvent(EventMain eventToPlay)
@@ -54,10 +56,10 @@ public class MainEventPlayer : MonoBehaviour
     // Late update occurs after update, ensuring advisor doesn't detect space too early
     void LateUpdate()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") )
         {
             // If space is pressed and we know the event has ended, make advisor leave
-            if (currentEventEnded)
+            if (currentEventEnded && mainGameLoopScript.playingMainEvent)
             {
                 Debug.Log("EventPlayer detected space");
                 //kingdomStats.UpdateStatSprites();
@@ -93,20 +95,13 @@ public class MainEventPlayer : MonoBehaviour
         button2Text.text = currentEvent.decision2Desc;
     }
 
-    // If either button is selected, start their respective coroutines
-    public void SelectedButton1()
-    {
-        StartCoroutine(ButtonSelect1(1));
-    }
-
-    public void SelectedButton2()
-    {
-        StartCoroutine(ButtonSelect1(2));
-    }
+    
 
     // First part of ButtonSelect
     public IEnumerator ButtonSelect1(int button) {
         Debug.Log("Chosen Decision " + button);
+        if(button == 1) nextMainEvent = currentEvent.decision1Next;
+        else nextMainEvent = currentEvent.decision2Next;
         // Deactivate buttons
         button1.SetActive(false);
         button2.SetActive(false);
@@ -123,33 +118,39 @@ public class MainEventPlayer : MonoBehaviour
     {
         // Construct event string 
         string eventString = decision.description + "\n";
-        // Add stat numbers to event string
-        if (decision.stat1Amount > 0)
-        {
-            eventString += "Increasing ";
-        }
-        else
-        {
-            eventString += "Decreasing ";
-        }
-        eventString += decision.stat1 + " By " + Mathf.Abs(decision.stat1Amount) + "\n";
 
-        if (decision.stat2Amount > 0)
-        {
-            eventString += "Increasing ";
+        if (!finalEvent) {
+            // Add stat numbers to event string
+            if (decision.stat1Amount > 0)
+            {
+                eventString += "Increasing ";
+            }
+            else
+            {
+                eventString += "Decreasing ";
+            }
+            eventString += decision.stat1 + " By " + Mathf.Abs(decision.stat1Amount) + "\n";
+
+            if (decision.stat2Amount > 0)
+            {
+                eventString += "Increasing ";
+            }
+            else
+            {
+                eventString += "Decreasing ";
+            }
+            eventString += decision.stat2 + " By " + Mathf.Abs(decision.stat2Amount) + "\n";
+
+            // Adjust kingdom stats
+            kingdomStats.ChangeStats(decision.stat1, decision.stat1Amount);
+            kingdomStats.ChangeStats(decision.stat2, decision.stat2Amount);
+            // Update kingdom stats sprites
+            kingdomStats.UpdateStatSprites();
         }
-        else
-        {
-            eventString += "Decreasing ";
-        }
-        eventString += decision.stat2 + " By " + Mathf.Abs(decision.stat2Amount) + "\n";
+
         eventString += "Press space to continue...";
 
-        // Adjust kingdom stats
-        kingdomStats.ChangeStats(decision.stat1, decision.stat1Amount);
-        kingdomStats.ChangeStats(decision.stat2, decision.stat2Amount);
-        // Update kingdom stats sprites
-        kingdomStats.UpdateStatSprites();
+        
         // Start displaying event string 
         StartCoroutine(eventText.NewTextToDisplay(eventString, false));
     }
@@ -157,7 +158,14 @@ public class MainEventPlayer : MonoBehaviour
     // Event Ended function for advisor to call
     public void EventEnded() {
         // Tell main game loop that event has ended
-        mainGameLoopScript.EventEnded();
+        Debug.Log("Setting mainGameLoopScript.mainEventNo to " + nextMainEvent);
+        mainGameLoopScript.mainEventNo = nextMainEvent;
+        if (!finalEvent) {
+            mainGameLoopScript.EventEnded();
+        } else {
+            mainGameLoopScript.FinalEventEnded();
+        }
+        
         
     }    
 }

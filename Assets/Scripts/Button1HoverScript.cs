@@ -20,9 +20,12 @@ public class Button1HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
         if (mainGameLoopScript.playingMainEvent) {
             Debug.Log("MainEvent playing");
             EventMain currentEvent = mainEventPlayer.currentEvent;
-            string stat1 = currentEvent.decision1.stat1;
-            string stat2 = currentEvent.decision1.stat2;
-            ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+            if (!mainEventPlayer.finalEvent) {
+                string stat1 = currentEvent.decision1.stat1;
+                string stat2 = currentEvent.decision1.stat2;    
+                ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+            }
+            
         } else {
             Debug.Log("GenericEvent playing");
             Event currentEvent = eventPlayer.currentEvent;
