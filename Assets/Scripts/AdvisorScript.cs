@@ -8,7 +8,11 @@ public class AdvisorScript : MonoBehaviour
     EventPlayer eventPlayer;
     [SerializeField]
     MainEventPlayer mainEventPlayer;
+    [SerializeField]
     SpriteRenderer sprite;
+
+    [SerializeField]
+    Sprite catA, civilA, economyA, foodA, militaryA;
     public bool fadeIn = false;
     public bool fadeOut = false;
     
@@ -19,14 +23,28 @@ public class AdvisorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+     
     }
 
-    public void AdvisorEnterScene(bool isGeneric)
+    public void AdvisorEnterScene(bool isGeneric, string advisorType)
     {
+        Debug.Log("Loading advisor: " + advisorType);
+        if (advisorType == "catA") {
+            sprite.sprite = catA;
+        } else if (advisorType == "militaryA") {
+            sprite.sprite = militaryA;
+        } else if (advisorType == "economyA") {
+            sprite.sprite = economyA;
+        } else if (advisorType == "foodA") {
+            sprite.sprite = foodA;
+        } else {
+            sprite.sprite = civilA;
+        }
+
         this.isGeneric = isGeneric;
         // Set advisor to face king
-        transform.localScale = new Vector3(102.0827f, 92.52522f, 2.214688f);
+        Debug.Log("Advisor Facing king");
+        transform.localScale = new Vector3(8.864027f, 8.034133f, 0.1923054f);
         // Set advisor to active
         gameObject.SetActive(true);
         // Fade in advisor
@@ -45,7 +63,7 @@ public class AdvisorScript : MonoBehaviour
     {
         Debug.Log("AdvisorLeaveScene");
         // Set advisor to face away from king
-        transform.localScale = new Vector3(-102.0827f, 92.52522f, 2.214688f);
+        transform.localScale = new Vector3(-8.864027f, 8.034133f, 0.1923054f);
         // Start fade out
         spacePressed = false;
         fadeOut = true;    

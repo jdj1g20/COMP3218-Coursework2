@@ -38,7 +38,7 @@ public class GenericEventPlayer : EventPlayer
     {
         Debug.Log("Revealing Advisor");
         // Set advisor to currentEvent.advisor
-        advisor.AdvisorEnterScene(true);
+        advisor.AdvisorEnterScene(true, currentEvent.advisor);
     }
     public override IEnumerator StartInitialEventDescription()
     {

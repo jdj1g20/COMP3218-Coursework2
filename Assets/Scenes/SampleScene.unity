@@ -152,9 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d787c249faba20545b6506303c92a94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  genericEventsJSON: {fileID: 4900000, guid: 35cc453f488e38a429db3c5c842be26f, type: 3}
+  genericEventsJSON: {fileID: 4900000, guid: 56208de2cfdc53d4886296b9a82915c5, type: 3}
   mainEventsJSON: {fileID: 4900000, guid: 6ed642a3d5a6f654aa6a26ae39f4e391, type: 3}
   kingdomStats: {fileID: 1828409293}
+  eventNo: 0
+  mainEventNo: 0
+  genericEventNo: 0
   genericEventPlayer: {fileID: 1774782563}
   mainEventPlayer: {fileID: 1673168497}
   playingMainEvent: 0
@@ -673,7 +676,7 @@ GameObject:
   - component: {fileID: 548661288}
   - component: {fileID: 548661290}
   m_Layer: 0
-  m_Name: AdvisorPlaceholder
+  m_Name: Advisor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -720,7 +723,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0a873ea02da507d44993181b8dccf9be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57a2bcec97e69464d90dd6e27b6929b1, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -739,8 +742,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548661287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -95.3, y: -44.4, z: 0}
-  m_LocalScale: {x: 102.082695, y: 92.525215, z: 2.2146876}
+  m_LocalPosition: {x: -98.5, y: -17.5, z: 0}
+  m_LocalScale: {x: 8.864027, y: 8.034133, z: 0.19230536}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2458,6 +2461,8 @@ MonoBehaviour:
   currentEventEnded: 0
   kingdomStats: {fileID: 1828409293}
   mainGameLoopScript: {fileID: 50198685}
+  nextMainEvent: 0
+  finalEvent: 0
 --- !u!4 &1673168498
 Transform:
   m_ObjectHideFlags: 0

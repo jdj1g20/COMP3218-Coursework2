@@ -40,7 +40,7 @@ public class MainEventPlayer : MonoBehaviour
     {
         Debug.Log("Revealing Advisor");
         // Set advisor to currentEvent.advisor
-        advisor.AdvisorEnterScene(false);
+        advisor.AdvisorEnterScene(false, currentEvent.advisor);
     }
     public IEnumerator StartInitialEventDescription()
     {
