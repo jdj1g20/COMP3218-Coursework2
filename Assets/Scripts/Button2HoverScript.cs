@@ -19,9 +19,12 @@ public class Button2HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
         Debug.Log("Mouse Enter Button2");
         if (mainGameLoopScript.playingMainEvent) {
             EventMain currentEvent = mainEventPlayer.currentEvent;
-            string stat1 = currentEvent.decision2.stat1;
-            string stat2 = currentEvent.decision2.stat2;
-            ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+            if (!mainEventPlayer.finalEvent) {
+                string stat1 = currentEvent.decision2.stat1;
+                string stat2 = currentEvent.decision2.stat2;
+                ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+            }
+            
         } else {
             Event currentEvent = eventPlayer.currentEvent;
             string stat1 = currentEvent.decision2.stat1;

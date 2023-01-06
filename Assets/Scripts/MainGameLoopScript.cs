@@ -17,6 +17,8 @@ public class MainGameLoopScript : MonoBehaviour
     public GenericEventPlayer genericEventPlayer;
     public MainEventPlayer mainEventPlayer;
 
+    public ExpositionFadeScript expositionFadeScript;
+    public ExpositionTextRevealScript expositionTextRevealScript;
     public bool playingMainEvent = false;
     public bool playingGenericEvent = false;
     // Start is called before the first frame update
@@ -44,6 +46,8 @@ public class MainGameLoopScript : MonoBehaviour
     // }
 
     private void StartGameLoop() {
+        StartCoroutine(expositionTextRevealScript.NewTextToDisplay("hallo, my nam is jam an i leik potato it is my fav thing in wurld."));
+        //expositionFadeScript.EndExposition();
         Debug.Log("Starting Main Game Loop");
         Debug.Log("Setting Start Stats");
         

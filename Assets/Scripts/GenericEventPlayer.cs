@@ -132,7 +132,7 @@ public class GenericEventPlayer : EventPlayer
         {
             eventString += "Decreasing ";
         }
-        eventString += decision.stat1 + " By " + Mathf.Abs(decision.stat1Amount) + "\n";
+        eventString += decision.stat1 + " by " + Mathf.Abs(decision.stat1Amount) + "\n";
 
         if (decision.stat2Amount > 0)
         {
@@ -142,7 +142,7 @@ public class GenericEventPlayer : EventPlayer
         {
             eventString += "Decreasing ";
         }
-        eventString += decision.stat2 + " By " + Mathf.Abs(decision.stat2Amount) + "\n";
+        eventString += decision.stat2 + " by " + Mathf.Abs(decision.stat2Amount) + "\n";
         eventString += "Press space to continue...";
 
         // Adjust kingdom stats
