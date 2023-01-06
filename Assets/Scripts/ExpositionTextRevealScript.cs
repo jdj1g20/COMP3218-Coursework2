@@ -7,6 +7,8 @@ public class ExpositionTextRevealScript : MonoBehaviour
     
     [SerializeField]
     ExpositionFadeScript expositionFadeScript;
+    [SerializeField]
+    MainGameLoopScript mainGameLoopScript;
     private TextMeshProUGUI text;
     private bool spaceDetected = false;
 
@@ -39,7 +41,7 @@ public class ExpositionTextRevealScript : MonoBehaviour
         }
         Debug.Log("Text Ended");
         // Text Ended
-        expositionFadeScript.EndExposition();
+        mainGameLoopScript.FinishedReadingExposition();
         
     }
 

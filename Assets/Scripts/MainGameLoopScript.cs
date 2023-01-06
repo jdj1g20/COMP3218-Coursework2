@@ -19,8 +19,15 @@ public class MainGameLoopScript : MonoBehaviour
 
     public ExpositionFadeScript expositionFadeScript;
     public ExpositionTextRevealScript expositionTextRevealScript;
+    public ExpositionTextParser expositionTextParser;
+    string[] exposition;
     public bool playingMainEvent = false;
     public bool playingGenericEvent = false;
+    public bool playingIntroduction = false;
+
+    public bool displayingIntroduction = false;
+
+    bool finishedIntro = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +53,9 @@ public class MainGameLoopScript : MonoBehaviour
     // }
 
     private void StartGameLoop() {
-        StartCoroutine(expositionTextRevealScript.NewTextToDisplay("hallo, my nam is jam an i leik potato it is my fav thing in wurld."));
+        //StartCoroutine(expositionTextRevealScript.NewTextToDisplay("hallo, my nam is jam an i leik potato it is my fav thing in wurld."));
+        exposition = expositionTextParser.GetExposition();
+
         //expositionFadeScript.EndExposition();
         Debug.Log("Starting Main Game Loop");
         Debug.Log("Setting Start Stats");
@@ -72,28 +81,68 @@ public class MainGameLoopScript : MonoBehaviour
         // mainEventsOrder = ConstructMainEventChronology();
         // Three Generic Events
         //genericEventPlayer.PlayEvent(genericEvents.events[0]);
-        playingGenericEvent = true;
-        genericEventPlayer.PlayEvent(genericEventsOrder[eventNo]);
+        playingIntroduction = true;
+
+        Debug.Log("Starting Introduction Exposition: " + exposition[0]);
+        StartCoroutine(expositionTextRevealScript.NewTextToDisplay(exposition[0]));
+
+        
+        // One Main Story Event
+
+        // Three Generic Events
+
+        // One Main Story Event
+
+        // Three Generic Events
+
+        // One Main Story Event
+
+        // Three Generic Events
+
+        // One Main Story Event
+
+        // Three Generic Events
+
+        // One Main Story Event
+    }
+
+    public void FinishedReadingExposition() {
+        if (playingIntroduction) {
+            Debug.Log("Finished reading introduction, waiting for space");
+            playingIntroduction = false;
+            displayingIntroduction = true;
+            
+        }
+    }
+
+    public void FinishedHidingExposition() {
+        if (!finishedIntro) {
+            finishedIntro = true;
+            Debug.Log("Finished fading out introduction, starting main game");
+            IntroductionExpositionFinished();
+
+        }
+    }
+
+   
+
+    void LateUpdate() {
+        if (Input.GetKeyDown("space")) {
+            if(displayingIntroduction) {
+                Debug.Log("Detected space after finishing introduction text, starting fade out");
+                displayingIntroduction = false;
+                expositionFadeScript.EndExposition();
+            }
+        }
+    }
+    
+
+    public void IntroductionExpositionFinished() {
+        playingMainEvent = true;
+        mainEventPlayer.PlayEvent(mainEvents.mainEvents[mainEventNo]);
         //genericEventPlayer.PlayEvent(mainEvents.events[0]);
         eventNo++;
-        genericEventNo++;
-        // One Main Story Event
-
-        // Three Generic Events
-
-        // One Main Story Event
-
-        // Three Generic Events
-
-        // One Main Story Event
-
-        // Three Generic Events
-
-        // One Main Story Event
-
-        // Three Generic Events
-
-        // One Main Story Event
+        
     }
 
     public void EventEnded() {
@@ -132,5 +181,6 @@ public class MainGameLoopScript : MonoBehaviour
         playingMainEvent = false;
         Debug.Log("Final event ended");
         Debug.Log("Starting final screen with last exposition of event " + mainEventNo);
+        
     }
 }

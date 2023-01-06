@@ -163,8 +163,11 @@ MonoBehaviour:
   mainEventPlayer: {fileID: 1673168497}
   expositionFadeScript: {fileID: 1076296801}
   expositionTextRevealScript: {fileID: 897343117}
+  expositionTextParser: {fileID: 1545785787}
   playingMainEvent: 0
   playingGenericEvent: 0
+  playingIntroduction: 0
+  displayingIntroduction: 0
 --- !u!4 &50198686
 Transform:
   m_ObjectHideFlags: 0
@@ -1520,6 +1523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expositionFadeScript: {fileID: 1076296801}
+  mainGameLoopScript: {fileID: 50198685}
 --- !u!1 &977389204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,7 +1772,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelImage: {fileID: 1076296799}
   scrollImage: {fileID: 1548936083}
+  expText: {fileID: 897343115}
   textRevealScript: {fileID: 897343117}
+  scroll: {fileID: 1548936081}
+  mainGameLoopScript: {fileID: 50198685}
   fadeIn: 0
   fadeOut: 0
   spacePressed: 0
@@ -2651,6 +2658,51 @@ MonoBehaviour:
   mainEventPlayer: {fileID: 1673168497}
   mainGameLoopScript: {fileID: 50198685}
   buttonSelectScript: {fileID: 818305605}
+--- !u!1 &1545785786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545785788}
+  - component: {fileID: 1545785787}
+  m_Layer: 0
+  m_Name: ExpositionParser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1545785787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545785786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaea29d874d9281449a3fb23a6d97771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataFile: {fileID: 4900000, guid: b0613b8d86114194ca51922ef8212f36, type: 3}
+--- !u!4 &1545785788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545785786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 246.34712, y: 99.26647, z: 1.9887608}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548936081
 GameObject:
   m_ObjectHideFlags: 0
