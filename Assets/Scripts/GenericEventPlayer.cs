@@ -23,6 +23,13 @@ public class GenericEventPlayer : EventPlayer
     public KingdomStatsScript kingdomStats;
     public MainGameLoopScript mainGameLoopScript;
 
+    public AudioClip[] clips;
+    public AudioSource sfxPlayer;
+
+    public void start(){
+        sfxPlayer = GetComponent<AudioSource>();
+    }
+
     // First method to be called
     public override void PlayEvent(Event eventToPlay)
     {
@@ -145,6 +152,12 @@ public class GenericEventPlayer : EventPlayer
         eventString += decision.stat2 + " by " + Mathf.Abs(decision.stat2Amount) + "\n";
         eventString += "Press space to continue...";
 
+        // Play SFX
+        for(int i = 0; i < clips.Length; i++){
+            if (decision.SFX==clips[i].name){
+                sfxPlayer.PlayOneShot(clips[i]);
+            }
+        }
         // Adjust kingdom stats
         kingdomStats.ChangeStats(decision.stat1, decision.stat1Amount);
         kingdomStats.ChangeStats(decision.stat2, decision.stat2Amount);

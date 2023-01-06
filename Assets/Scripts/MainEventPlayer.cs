@@ -25,6 +25,13 @@ public class MainEventPlayer : MonoBehaviour
     public int nextMainEvent;
     public bool finalEvent = false;
 
+    public AudioClip[] clips;
+    public AudioSource sfxPlayer;
+
+    public void start(){
+        sfxPlayer = GetComponent<AudioSource>();
+    }
+
     // First method to be called
     public void PlayEvent(EventMain eventToPlay)
     {
@@ -141,6 +148,12 @@ public class MainEventPlayer : MonoBehaviour
             }
             eventString += decision.stat2 + " by " + Mathf.Abs(decision.stat2Amount) + "\n";
 
+            // Play SFX
+            for(int i = 0; i < clips.Length; i++){
+                if (decision.SFX==clips[i].name){
+                    sfxPlayer.PlayOneShot(clips[i]);
+                }
+            }
             // Adjust kingdom stats
             kingdomStats.ChangeStats(decision.stat1, decision.stat1Amount);
             kingdomStats.ChangeStats(decision.stat2, decision.stat2Amount);
