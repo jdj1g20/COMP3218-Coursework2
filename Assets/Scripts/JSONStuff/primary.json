@@ -166,7 +166,7 @@
             "description": "Your highness, I have been sent with a message from King Meowthew to inform you that Purrcival has been discovered rallying the common catfolk against the king whilst in hiding. King Meowthew requests some military support to deal with the issue, before Purrcival builds up too much support for the royal army to handle.",
             "advisor": "catA",
             "SFX": "",
-            "decision1Desc": "We shall send a few battalions to support King Meowthew",
+            "decision1Desc": "We shall send our army to support King Meowthew",
             "decision1Next": 13,
             "decision1": {
                 "description": "Thank you your highness, this show of strength will definitely help deter the catfolk from following Purrcival.",

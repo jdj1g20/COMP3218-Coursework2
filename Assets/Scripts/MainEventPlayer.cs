@@ -174,9 +174,10 @@ public class MainEventPlayer : MonoBehaviour
         Debug.Log("Setting mainGameLoopScript.mainEventNo to " + nextMainEvent);
         mainGameLoopScript.mainEventNo = nextMainEvent;
         if (!finalEvent) {
+            
             mainGameLoopScript.EventEnded();
         } else {
-            mainGameLoopScript.FinalEventEnded();
+            mainGameLoopScript.FinalEventEnded(nextMainEvent);
         }
         
         

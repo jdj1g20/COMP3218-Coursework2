@@ -49,6 +49,7 @@ public class ExpositionTextRevealScript : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
+            Debug.Log("ExpositionText detected space");
             spaceDetected = true;
         }
     }

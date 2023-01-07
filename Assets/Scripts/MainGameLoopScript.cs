@@ -24,8 +24,9 @@ public class MainGameLoopScript : MonoBehaviour
     public bool playingMainEvent = false;
     public bool playingGenericEvent = false;
     public bool playingIntroduction = false;
-
+    public bool playingGameOverExposition = false;
     public bool displayingIntroduction = false;
+    public bool displayingGameOverExposition = false;
 
     bool finishedIntro = false;
     // Start is called before the first frame update
@@ -112,6 +113,10 @@ public class MainGameLoopScript : MonoBehaviour
             playingIntroduction = false;
             displayingIntroduction = true;
             
+        } else if (playingGameOverExposition) {
+            Debug.Log ("Finished reading game over exposition");
+            playingGameOverExposition = false;
+            displayingGameOverExposition = true;
         }
     }
 
@@ -132,6 +137,10 @@ public class MainGameLoopScript : MonoBehaviour
                 Debug.Log("Detected space after finishing introduction text, starting fade out");
                 displayingIntroduction = false;
                 expositionFadeScript.EndExposition();
+            } else if (displayingGameOverExposition) {
+                displayingGameOverExposition = false;
+                Debug.Log("Game Over Screen");
+                // Trigger game over screen
             }
         }
     }
@@ -148,6 +157,34 @@ public class MainGameLoopScript : MonoBehaviour
     public void EventEnded() {
         playingGenericEvent = false;
         playingMainEvent = false;
+
+        string zeroStat = kingdomStats.CheckForZeroStat();
+        if (zeroStat == "military") {
+            Debug.Log("Starting military gameover");
+            playingGameOverExposition = true;
+            expositionFadeScript.StartExposition(exposition[1]);
+            return;
+        } else if (zeroStat == "economy") {
+            Debug.Log("Starting economy gameover");
+            playingGameOverExposition = true;
+            expositionFadeScript.StartExposition(exposition[2]);
+            return;
+        } else if (zeroStat == "diplomacy") {
+            Debug.Log("Starting diplomacy gameover");
+            playingGameOverExposition = true;
+            expositionFadeScript.StartExposition(exposition[3]);
+            return;
+        } else if (zeroStat == "approval") {
+            Debug.Log("Starting approval gameover");
+            playingGameOverExposition = true;
+            expositionFadeScript.StartExposition(exposition[4]);
+            return;
+        } else if (zeroStat == "food") {
+            Debug.Log("Starting food gameover");
+            playingGameOverExposition = true;
+            expositionFadeScript.StartExposition(exposition[5]);
+            return;
+        }
         // Every 4 events play main story event
         if (eventNo % 2 == 0) {
             Debug.Log("Starting next main event: " + mainEventNo);
@@ -177,10 +214,10 @@ public class MainGameLoopScript : MonoBehaviour
         }
         
     }
-    public void FinalEventEnded() {
+    public void FinalEventEnded(int nextMainEvent) {
         playingMainEvent = false;
         Debug.Log("Final event ended");
-        Debug.Log("Starting final screen with last exposition of event " + mainEventNo);
-        
+        Debug.Log("Starting final screen with last exposition of event " + nextMainEvent);
+        expositionFadeScript.StartExposition(exposition[nextMainEvent - 9]);
     }
 }

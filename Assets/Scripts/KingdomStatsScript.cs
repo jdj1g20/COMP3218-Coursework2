@@ -94,7 +94,17 @@ public class KingdomStatsScript : MonoBehaviour
 
     }
 
-    
+    public string CheckForZeroStat() {
+        foreach (var stat in statList)
+        {
+            if(stat.statAmount < 1) {
+                Debug.Log("Found stat at zero: " + stat.statName);
+                return(stat.statName);
+            }
+
+        }
+        return "";
+    }
 
     // Update is called once per frame
     void Update()

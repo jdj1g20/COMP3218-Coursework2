@@ -68,8 +68,8 @@ public class Button1HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
             return approval;
         } else if (stat == "food") {
             return food;
-        }
-        Debug.LogError("Can't find Stat (Button1HoverScript)");
+        } 
+        
         return null;
     }
     private void ChangeStatColourYellow(SpriteRenderer sprite1, SpriteRenderer sprite2){

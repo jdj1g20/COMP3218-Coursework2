@@ -26,6 +26,8 @@ public class ExpositionFadeScript : MonoBehaviour
     float speed = 0.1f;
     
     public void StartExposition(string expositionText) {
+        Debug.Log("Starting exposition fade in: " + expositionText);
+        expText.text = "";
         this.expositionText = expositionText; 
         gameObject.SetActive(true);
         scroll.SetActive(true);
@@ -35,9 +37,15 @@ public class ExpositionFadeScript : MonoBehaviour
     }
 
     private void ExpositionFadedIn() {
-        textRevealScript.NewTextToDisplay(expositionText);
+        Debug.Log("Exposition faded in, starting text reveal");
         // start scroll text
+        StartCoroutine(StartTextDisplay());
         
+    }
+
+    private IEnumerator StartTextDisplay() {
+        yield return null;
+        StartCoroutine(textRevealScript.NewTextToDisplay(expositionText));
     }
 
     public void EndExposition() {
@@ -48,6 +56,7 @@ public class ExpositionFadeScript : MonoBehaviour
 
     private void ExpositionFadedOut() {
         // Set advisor to inactive
+        expositionText = "";
         gameObject.SetActive(false);
         scroll.SetActive(false);
         mainGameLoopScript.FinishedHidingExposition();
@@ -68,9 +77,9 @@ public class ExpositionFadeScript : MonoBehaviour
             if (spacePressed)
             {
                 // Skip to faded in
-                panelImage.color = new Color(1, 1, 1, 1);
+                panelImage.color = new Color(0, 0, 0, 1);
                 scrollImage.color = new Color(1, 1, 1, 1);
-                expText.color = new Color(1, 1, 1, 1);
+                expText.color = new Color(0, 0, 0, 1);
                 spacePressed = false;
                 fadeIn = false;
                 Debug.Log("Exposition Faded In (space)");
@@ -79,11 +88,11 @@ public class ExpositionFadeScript : MonoBehaviour
             else
             {
                 // Slowly fade in
-                panelImage.color = new Color(panelImage.color.r + speed * Time.deltaTime, panelImage.color.g + speed * Time.deltaTime, panelImage.color.b + speed * Time.deltaTime, panelImage.color.a + speed * Time.deltaTime);
+                panelImage.color = new Color(panelImage.color.r - speed * Time.deltaTime, panelImage.color.g - speed * Time.deltaTime, panelImage.color.b - speed * Time.deltaTime, panelImage.color.a + speed * Time.deltaTime);
                 scrollImage.color = new Color(scrollImage.color.r + speed * Time.deltaTime, scrollImage.color.g + speed * Time.deltaTime, scrollImage.color.b + speed * Time.deltaTime, scrollImage.color.a + speed * Time.deltaTime);
-                expText.color = new Color(expText.color.r + speed * Time.deltaTime, expText.color.g + speed * Time.deltaTime, expText.color.b + speed * Time.deltaTime, expText.color.a + speed * Time.deltaTime);
+                expText.color = new Color(expText.color.r - speed * Time.deltaTime, expText.color.g - speed * Time.deltaTime, expText.color.b - speed * Time.deltaTime, expText.color.a + speed * Time.deltaTime);
 
-                if (panelImage.color.a >= 1 && panelImage.color.r >= 1 && panelImage.color.b >= 1 && panelImage.color.g >= 1)
+                if (panelImage.color.a >= 1 && panelImage.color.r <= 0 && panelImage.color.b <= 0 && panelImage.color.g <= 0)
                 {
                     fadeIn = false;
                     Debug.Log("Exposition Faded In");
