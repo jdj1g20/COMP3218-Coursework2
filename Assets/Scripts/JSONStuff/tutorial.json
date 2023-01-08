@@ -146,7 +146,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DeathSound"
 
             },
             "decision2Desc": "Yay, I'm the king!!",
@@ -157,7 +157,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DeathSound"
 
             }
         }
