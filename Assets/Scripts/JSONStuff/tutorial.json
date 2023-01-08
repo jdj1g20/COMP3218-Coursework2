@@ -1,55 +1,162 @@
 {
     "mainEvents": [
         {
-            "description": "Welcome to court my leige, we have heard many tales of your travels. Please, my leige, regale poetry of your epic travels. (Select a response)",
+            "description": "While he is away, your father has instructed me to teach you how to rule Ratopolis, as you shall be king one day. You mustn't press space to skip through all my animations and dialogue!",
             "advisor": "civilA",
             "SFX": "",
-            "decision1Desc": "We never left the city gates...",
+            "decision1Desc": "That sounds boring!",
             "decision1Next": 1,
             "decision1": {
-                "description": "The food that you've given was received and put to good use, King Meothew sends his thanks.",
-                "stat1": "food",
+                "description": "",
+                "stat1": "",
                 "stat1Amount": 0,
-                "stat2": "diplomacy",
+                "stat2": "",
                 "stat2Amount": 0,
                 "SFX": ""
 
             },
-            "decision2Desc": "Maybe at a later date my loyal subject.",
+            "decision2Desc": "Where do we start?",
             "decision2Next": 2,
             "decision2": {
-                "description": "King Meowthew is displeased, but understands that Ratopolis prioritises feeding its own population before any other.",
-                "stat1": "approval",
+                "description": "",
+                "stat1": "",
                 "stat1Amount": 0,
-                "stat2": "diplomacy",
+                "stat2": "",
                 "stat2Amount": 0,
                 "SFX": ""
 
             }
         },
         {
-            "description": "Your highness, King Meowthew has sent me with a message. He has uncovered a malicious plot by Purrcival to steal his throne. He proposes to purchase some of your weapons to bolster his military and help him arrest Purrcival before this plan gets out of hand.",
-            "advisor": "catA",
-            "SFX": "battleSound",
-            "decision1Desc": "We will send the weapons we can spare.",
+            "description": "Pay attention now! Firstly, the most important part of ruling is to know how well the kingdom is doing at any point in time. You must balance out the kingdom's military strength, economy, diplomatic relations with foreign kingdoms, approval and food; otherwise you might lose your throne. You can see them in the top left corner.",
+            "advisor": "civilA",
+            "SFX": "",
+            "decision1Desc": "Interesting.",
             "decision1Next": 3,
             "decision1": {
-                "description": "King Meowthew informed me that Purrcival has been arrested for conspiring against the crown. He has sent the gold he promised, along with his thanks for your support.",
-                "stat1": "military",
-                "stat1Amount": -3,
-                "stat2": "economy",
-                "stat2Amount": 3,
+                "description": "",
+                "stat1": "",
+                "stat1Amount": 0,
+                "stat2": "",
+                "stat2Amount": 0,
                 "SFX": ""
 
             },
-            "decision2Desc": "We will not part with our weapons.",
+            "decision2Desc": "Boooring.",
             "decision2Next": 4,
             "decision2": {
-                "description": "King Meowthew has not sent a response, but I can sense that he is unhappy with your decision.",
+                "description": "",
+                "stat1": "",
+                "stat1Amount": 0,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            }
+        },
+        {
+            "description": "Good. Firstly, the most important part of ruling is to know how well the kingdom is doing at any point in time. You must balance out the kingdom's military strength, economy, diplomatic relations with foreign kingdoms, approval and food; otherwise you might lose your throne. You can see them in the top left corner.",
+            "advisor": "civilA",
+            "SFX": "",
+            "decision1Desc": "Interesting.",
+            "decision1Next": 3,
+            "decision1": {
+                "description": "",
+                "stat1": "",
+                "stat1Amount": 0,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            },
+            "decision2Desc": "Boooring.",
+            "decision2Next": 4,
+            "decision2": {
+                "description": "",
+                "stat1": "",
+                "stat1Amount": 0,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            }
+        },
+        {
+            "description": "Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision, but not by how much. \n Oh my, your father is back! But, oh no, he looks wounded!",
+            "advisor": "civilA",
+            "SFX": "",
+            "decision1Desc": "How intriguing!",
+            "decision1Next": 5,
+            "decision1": {
+                "description": "",
                 "stat1": "military",
-                "stat1Amount": 1,
-                "stat2": "diplomacy",
-                "stat2Amount": -2,
+                "stat1Amount": -1,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            },
+            "decision2Desc": "Father?!",
+            "decision2Next": 5,
+            "decision2": {
+                "description": "",
+                "stat1": "military",
+                "stat1Amount": -1,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            }
+        },{
+            "description": "Stop messing around! Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision, but not by how much. \n Oh my, your father is back! But, oh no, he looks wounded!",
+            "advisor": "civilA",
+            "SFX": "",
+            "decision1Desc": "How intriguing!",
+            "decision1Next": 5,
+            "decision1": {
+                "description": "",
+                "stat1": "military",
+                "stat1Amount": -1,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            },
+            "decision2Desc": "Father?!",
+            "decision2Next": 5,
+            "decision2": {
+                "description": "",
+                "stat1": "military",
+                "stat1Amount": -1,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            }
+        },
+        {
+            "description": "My son... The battle was a stalemate... Queen Whiskers was killed in the fighting, but I have been mortally wounded... You must rise up and take the throne of Ratopolis... Be a better king than I was... Blargh... \u002A dies \u002A",
+            "advisor": "civilA",
+            "SFX": "",
+            "decision1Desc": "Noooo, father!!!",
+            "decision1Next": 6,
+            "decision1": {
+                "description": "",
+                "stat1": "",
+                "stat1Amount": 0,
+                "stat2": "",
+                "stat2Amount": 0,
+                "SFX": ""
+
+            },
+            "decision2Desc": "Yay, I'm the king!!",
+            "decision2Next": 6,
+            "decision2": {
+                "description": "",
+                "stat1": "",
+                "stat1Amount": 0,
+                "stat2": "",
+                "stat2Amount": 0,
                 "SFX": ""
 
             }

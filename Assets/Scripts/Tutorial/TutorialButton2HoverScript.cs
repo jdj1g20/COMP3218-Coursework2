@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class Button2HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TutorialButton2HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     SpriteRenderer military, economy, diplomacy, approval, food;
     [SerializeField]
     GenericEventPlayer eventPlayer;
     [SerializeField]
-    MainEventPlayer mainEventPlayer;
+    TutorialEventPlayer mainEventPlayer;
     [SerializeField]
-    MainGameLoopScript mainGameLoopScript;
+    TutorialGameLoop mainGameLoopScript;
     
     [SerializeField]
-    ButtonSelectScript buttonSelectScript;
+    TutorialButtonSelectScript buttonSelectScript;
     public void OnPointerEnter(PointerEventData eventData) {
         Debug.Log("Mouse Enter Button2");
         if (mainGameLoopScript.playingMainEvent) {

@@ -12,7 +12,7 @@
                 "stat1Amount": -2,
                 "stat2": "diplomacy",
                 "stat2Amount": 2,
-                "SFX": ""
+                "SFX": "DiplomacyPlus"
 
             },
             "decision2Desc": "We cannot spare any food.",
@@ -23,7 +23,7 @@
                 "stat1Amount": 2,
                 "stat2": "diplomacy",
                 "stat2Amount": -2,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
 
             }
         },
@@ -39,7 +39,7 @@
                 "stat1Amount": -3,
                 "stat2": "economy",
                 "stat2Amount": 3,
-                "SFX": ""
+                "SFX": "EconomyPlus"
 
             },
             "decision2Desc": "We will not part with our weapons.",
@@ -50,7 +50,7 @@
                 "stat1Amount": 1,
                 "stat2": "diplomacy",
                 "stat2Amount": -2,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
 
             }
         },
@@ -66,7 +66,7 @@
                 "stat1Amount": -1,
                 "stat2": "economy",
                 "stat2Amount": 2,
-                "SFX": ""
+                "SFX": "EconomyPlus"
 
             },
             "decision2Desc": "We shall reject his offer",
@@ -74,10 +74,10 @@
             "decision2": {
                 "description": "We have heard reports that Purrcival has gone into hiding.",
                 "stat1": "military",
-                "stat1Amount": 1,
+                "stat1Amount": 2,
                 "stat2": "diplomacy",
                 "stat2Amount": -1,
-                "SFX": ""
+                "SFX": "MillitaryPlus"
 
             }
         },
@@ -92,8 +92,8 @@
                 "stat1": "approval",
                 "stat1Amount": 2,
                 "stat2": "diplomacy",
-                "stat2Amount": 2,
-                "SFX": ""
+                "stat2Amount": 1,
+                "SFX": "ApprovalPlus"
 
             },
             "decision2Desc": "Send them back to King Meowthew, he can deal with them.",
@@ -104,7 +104,7 @@
                 "stat1Amount": 1,
                 "stat2": "diplomacy",
                 "stat2Amount": -2,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
 
             }
         },
@@ -117,10 +117,10 @@
             "decision1": {
                 "description": "Trade routes between our kingdoms have been opened. They are bringing in lots of food and money to both kingdoms.",
                 "stat1": "economy",
-                "stat1Amount": 3,
+                "stat1Amount": 1,
                 "stat2": "food",
-                "stat2Amount": 3,
-                "SFX": ""
+                "stat2Amount": 2,
+                "SFX": "FoodPlus"
 	
             },
             "decision2Desc": "We will not negotiate with a regicide!",
@@ -131,7 +131,7 @@
                 "stat1Amount": 2,
                 "stat2": "diplomacy",
                 "stat2Amount": -2,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
 
             }
         },
@@ -144,10 +144,10 @@
             "decision1": {
                 "description": "Our forces reached the Cat Kingdom's capital right at the same time as Purrcival's forces, trapping King Meowthew from all sides. The King surrendered and Purrcival has taken over as the king of the Cat Kingdom.",
                 "stat1": "diplomacy",
-                "stat1Amount": 3,
+                "stat1Amount": 1,
                 "stat2": "military",
-                "stat2Amount": 3,
-                "SFX": ""
+                "stat2Amount": 2,
+                "SFX": "MillitaryPlus"
 
             },
             "decision2Desc": "I have changed my mind, we will not support him.",
@@ -158,7 +158,7 @@
                 "stat1Amount": 1,
                 "stat2": "diplomacy",
                 "stat2Amount": -2,
-                "SFX": ""
+                "SFX": "MillitaryMinus"
 
             }
         },
@@ -169,12 +169,12 @@
             "decision1Desc": "We shall send our army to support King Meowthew",
             "decision1Next": 13,
             "decision1": {
-                "description": "Thank you your highness, this show of strength will definitely help deter the catfolk from following Purrcival.",
+                "description": "Thank you, your highness, this show of strength will definitely help deter the catfolk from following Purrcival.",
                 "stat1": "military",
-                "stat1Amount": -3,
+                "stat1Amount": 2,
                 "stat2": "approval",
-                "stat2Amount": 3,
-                "SFX": ""
+                "stat2Amount": -2,
+                "SFX": "MillitaryPlus"
             },
             "decision2Desc": "We cannot spare any military at this time.",
             "decision2Next": 14,
@@ -184,7 +184,7 @@
                 "stat1Amount": 1,
                 "stat2": "diplomacy",
                 "stat2Amount": -2,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
             }
         },
 	    {
@@ -199,7 +199,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DiplomacyPlus"
             },
             "decision2Desc": "I reject the offer, cats cannot be trusted!",
             "decision2Next": 16,
@@ -209,7 +209,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
             }
         },
 	    {
@@ -224,7 +224,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "hornSound"
+                "SFX": "MillitaryPlus"
             },
             "decision2Desc": "Who rules the Cat Kingdom is none of our concern.",
             "decision2Next": 18,
@@ -234,7 +234,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "ApprovalMinus"
             }
         },
 	    {
@@ -249,7 +249,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "hornSound"
+                "SFX": "MillitaryPlus"
             },
             "decision2Desc": "It is over, raise the white flag.",
             "decision2Next": 20,
@@ -259,7 +259,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "MillitaryMinus"
             }
         },
 	    {
@@ -274,7 +274,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "battleSound"
+                "SFX": "MillitaryPlus"
             },
             "decision2Desc": "We will use our defences to wear them out.",
             "decision2Next": 22,
@@ -284,7 +284,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "hammerSound"
+                "SFX": "FoodPlus"
             }
         },
 	    {
@@ -299,7 +299,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DiplomacyPlus"
             },
             "decision2Desc": "I will sit this one out.",
             "decision2Next": 24,
@@ -309,7 +309,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
             }
         },
 	    {
@@ -324,7 +324,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "ApprovalMinus"
             },
             "decision2Desc": "I admit that I initially supported it, but quickly changed my allegiances.",
             "decision2Next": 26,
@@ -334,7 +334,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "ApprovalMinus"
             }
         },
 	    {
@@ -349,7 +349,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DiplomacyPlus"
             },
             "decision2Desc": "I'm afraid I won't be attending.",
             "decision2Next": 28,
@@ -359,7 +359,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "DiplomacyMinus"
             }
         },
 	    {
@@ -374,7 +374,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "MillitaryPlus"
             },
             "decision2Desc": "They should attack the archers on the east flank!",
             "decision2Next": 30,
@@ -384,7 +384,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": ""
+                "SFX": "MillitaryPlus"
             }
         }
     ]

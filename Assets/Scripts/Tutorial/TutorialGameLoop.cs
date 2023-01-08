@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainGameLoopScript : MonoBehaviour
+public class TutorialGameLoop : MonoBehaviour
 {
     public TextAsset genericEventsJSON;
     public TextAsset mainEventsJSON;
@@ -15,10 +15,10 @@ public class MainGameLoopScript : MonoBehaviour
     
     public int genericEventNo = 0;
     public GenericEventPlayer genericEventPlayer;
-    public MainEventPlayer mainEventPlayer;
+    public TutorialEventPlayer mainEventPlayer;
 
-    public ExpositionFadeScript expositionFadeScript;
-    public ExpositionTextRevealScript expositionTextRevealScript;
+    public TutorialExpositionFadeScript expositionFadeScript;
+    public TutorialExpositionTextRevealScript expositionTextRevealScript;
     public ExpositionTextParser expositionTextParser;
 
     public GameObject playAgainButton, exitButton;
@@ -32,6 +32,9 @@ public class MainGameLoopScript : MonoBehaviour
 
     bool finishedIntro = false;
     // Start is called before the first frame update
+    public GameSceneManager gameSceneManager;
+    public SpriteRenderer throneRoom;
+    public Sprite nonKingThroneRoom, kingThroneRoom;
     void Start()
     {
         StartGameLoop();
@@ -58,23 +61,24 @@ public class MainGameLoopScript : MonoBehaviour
     private void StartGameLoop() {
         //StartCoroutine(expositionTextRevealScript.NewTextToDisplay("hallo, my nam is jam an i leik potato it is my fav thing in wurld."));
         exposition = expositionTextParser.GetExposition();
-
+        throneRoom.sprite = nonKingThroneRoom;
         // Hiding buttons
         playAgainButton.SetActive(false);
         exitButton.SetActive(false);
 
         //expositionFadeScript.EndExposition();
-        Debug.Log("Starting Main Game Loop");
+        Debug.Log("Starting Tutorial Game Loop");
         Debug.Log("Setting Start Stats");
         
         kingdomStats.UpdateStatSprites();
-        Debug.Log("Importing Generic Events");
+        Debug.Log("Importing Tutorial Events");
+        
         genericEvents = EventJSONReader.GenerateEventsFromJSON(genericEventsJSON);
         //genericEvents = EventJSONReader.GenerateEventsFromJSON(mainEventsJSON);
 
         // Play back story
         mainEvents = MainEventJSONReader.GenerateEventsFromJSON(mainEventsJSON);
-        Debug.Log("mainEvents: " + mainEvents + " mainEvents.mainEvents: " + mainEvents.mainEvents.Count);
+        Debug.Log("tutorialEvents: " + mainEvents + " mainEvents.mainEvents: " + mainEvents.mainEvents.Count);
         // Construct eventsOrder with generic and main events:
         // eventsOrder = ConstructChronology();
         genericEventsOrder = genericEvents.events;
@@ -123,8 +127,10 @@ public class MainGameLoopScript : MonoBehaviour
             Debug.Log ("Finished reading game over exposition");
             playingGameOverExposition = false;
             // displayingGameOverExposition = true;
-            playAgainButton.SetActive(true);
-            exitButton.SetActive(true);
+            Debug.Log("Loading game");
+            gameSceneManager.LoadLevel("SampleScene");
+            // playAgainButton.SetActive(true);
+            // exitButton.SetActive(true);
         }
     }
 
@@ -156,7 +162,7 @@ public class MainGameLoopScript : MonoBehaviour
 
     public void IntroductionExpositionFinished() {
         playingMainEvent = true;
-        mainEventPlayer.PlayEvent(mainEvents.mainEvents[mainEventNo]);
+        mainEventPlayer.PlayEvent(mainEvents.mainEvents[mainEventNo], true);
         //genericEventPlayer.PlayEvent(mainEvents.events[0]);
         eventNo++;
         
@@ -166,67 +172,72 @@ public class MainGameLoopScript : MonoBehaviour
         playingGenericEvent = false;
         playingMainEvent = false;
 
-        string zeroStat = kingdomStats.CheckForZeroStat();
-        if (zeroStat == "military") {
-            Debug.Log("Starting military gameover");
-            playingGameOverExposition = true;
-            expositionFadeScript.StartExposition(exposition[1]);
-            return;
-        } else if (zeroStat == "economy") {
-            Debug.Log("Starting economy gameover");
-            playingGameOverExposition = true;
-            expositionFadeScript.StartExposition(exposition[2]);
-            return;
-        } else if (zeroStat == "diplomacy") {
-            Debug.Log("Starting diplomacy gameover");
-            playingGameOverExposition = true;
-            expositionFadeScript.StartExposition(exposition[3]);
-            return;
-        } else if (zeroStat == "approval") {
-            Debug.Log("Starting approval gameover");
-            playingGameOverExposition = true;
-            expositionFadeScript.StartExposition(exposition[4]);
-            return;
-        } else if (zeroStat == "food") {
-            Debug.Log("Starting food gameover");
-            playingGameOverExposition = true;
-            expositionFadeScript.StartExposition(exposition[5]);
-            return;
-        }
+        // string zeroStat = kingdomStats.CheckForZeroStat();
+        // if (zeroStat == "military") {
+        //     Debug.Log("Starting military gameover");
+        //     playingGameOverExposition = true;
+        //     expositionFadeScript.StartExposition(exposition[1]);
+        //     return;
+        // } else if (zeroStat == "economy") {
+        //     Debug.Log("Starting economy gameover");
+        //     playingGameOverExposition = true;
+        //     expositionFadeScript.StartExposition(exposition[2]);
+        //     return;
+        // } else if (zeroStat == "diplomacy") {
+        //     Debug.Log("Starting diplomacy gameover");
+        //     playingGameOverExposition = true;
+        //     expositionFadeScript.StartExposition(exposition[3]);
+        //     return;
+        // } else if (zeroStat == "approval") {
+        //     Debug.Log("Starting approval gameover");
+        //     playingGameOverExposition = true;
+        //     expositionFadeScript.StartExposition(exposition[4]);
+        //     return;
+        // } else if (zeroStat == "food") {
+        //     Debug.Log("Starting food gameover");
+        //     playingGameOverExposition = true;
+        //     expositionFadeScript.StartExposition(exposition[5]);
+        //     return;
+        // }
         // Every 4 events play main story event
-        if (eventNo % 2 == 0) {
-            Debug.Log("Starting next main event: " + mainEventNo);
-            EventMain eventMain = mainEvents.mainEvents[mainEventNo];
-            Debug.Log("Found main event: " + eventMain.description);
-            playingMainEvent = true;
-            if (mainEventNo >= 7) {
-                Debug.Log("Final Main Event");
-                mainEventPlayer.finalEvent = true;
-            }
-            mainEventPlayer.PlayEvent(eventMain);
+        // if (eventNo % 2 == 0) {
+        //     Debug.Log("Starting next main event: " + mainEventNo);
+        if (mainEventNo == 5) {
+            throneRoom.sprite = kingThroneRoom;
+            mainEventPlayer.finalEvent = true;
+        }
+        EventMain eventMain = mainEvents.mainEvents[mainEventNo];
+        //     Debug.Log("Found main event: " + eventMain.description);
+        //     playingMainEvent = true;
+        //     if (mainEventNo >= 7) {
+        //         Debug.Log("Final Main Event");
+        //         mainEventPlayer.finalEvent = true;
+        //     }
+        Debug.Log("Starting next main event");
+        mainEventPlayer.PlayEvent(eventMain, false);
             
     
             // mainEventNo = mainEventsOrder[eventMain];
             // Debug.Log("Setting mainEventNo to " + mainEventNo);
-            eventNo ++;
-        }
-        else {
-            Debug.Log("Starting next generic event: " + genericEventNo);
-            Event genericEvent = genericEventsOrder[genericEventNo];
-            Debug.Log("Found generic event: " + genericEvent.description);
-            playingGenericEvent = true;
-            genericEventPlayer.PlayEvent(genericEvent);
+        //     eventNo ++;
+        // }
+        // else {
+        //     Debug.Log("Starting next generic event: " + genericEventNo);
+        //     Event genericEvent = genericEventsOrder[genericEventNo];
+        //     Debug.Log("Found generic event: " + genericEvent.description);
+        //     playingGenericEvent = true;
+        //     genericEventPlayer.PlayEvent(genericEvent);
 
-            genericEventNo ++;
-            eventNo ++;
-        }
+        //     genericEventNo ++;
+        //     eventNo ++;
+        // }
         
     }
     public void FinalEventEnded(int nextMainEvent) {
         playingMainEvent = false;
         Debug.Log("Final event ended");
         Debug.Log("Starting final screen with last exposition of event " + nextMainEvent);
-        expositionFadeScript.StartExposition(exposition[nextMainEvent - 9]);
+        expositionFadeScript.StartExposition(exposition[1]);
         playingGameOverExposition = true;
     }
 }
