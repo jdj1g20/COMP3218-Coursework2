@@ -81,9 +81,12 @@ public class KingdomStatsScript : MonoBehaviour
             Debug.Log("Turning stat red");
             stat.spriteRenderer.color = Color.red;
         }
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Turning stat white");
-        stat.spriteRenderer.color = Color.white;
+        if (stat.statAmount > 0) {
+            yield return new WaitForSeconds(1f);
+            Debug.Log("Turning stat white");
+            stat.spriteRenderer.color = Color.white;
+        }
+        
     }
     public void UpdateStatSprites () {
         foreach (var stat in statList)
