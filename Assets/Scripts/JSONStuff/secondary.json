@@ -211,7 +211,7 @@
         "description": "The sewer miners found a valuable ring that dates back centuries flushed down into our sewers. What should we do with it?",
         "advisor": "economyA",
         "SFX": "",
-        "decision1Desc": "Sell it an invest the money into my subjects.",
+        "decision1Desc": "Sell it and invest the money into my subjects.",
         "decision1": {
           "description": "The people sing your name in the streets.",
           "stat1": "approval",

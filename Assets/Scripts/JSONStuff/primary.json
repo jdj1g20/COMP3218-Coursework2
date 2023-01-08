@@ -115,7 +115,7 @@
             "decision1Desc": "Trade routes sounds like a great idea!",
             "decision1Next": 9,
             "decision1": {
-                "description": "Trade routes between our kingdoms have been opened. They are bringing in lots of food and money to both kingdoms.",
+                "description": "Trade routes between our lands have been opened. They are bringing in lots of food and money to both kingdoms.",
                 "stat1": "economy",
                 "stat1Amount": 1,
                 "stat2": "food",
@@ -144,9 +144,9 @@
             "decision1": {
                 "description": "Our forces reached the Cat Kingdom's capital right at the same time as Purrcival's forces, trapping King Meowthew from all sides. The King surrendered and Purrcival has taken over as the king of the Cat Kingdom.",
                 "stat1": "diplomacy",
-                "stat1Amount": 1,
+                "stat1Amount": 2,
                 "stat2": "military",
-                "stat2Amount": 2,
+                "stat2Amount": -1,
                 "SFX": "MillitaryPlus"
 
             },

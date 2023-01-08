@@ -27,7 +27,7 @@ public class Button2HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
                 string stat2 = currentEvent.decision2.stat2;
                 ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
             } else {
-                ChangeButtonColourWhite();
+                ChangeButtonColourYellow();
             }
             
         } else {
