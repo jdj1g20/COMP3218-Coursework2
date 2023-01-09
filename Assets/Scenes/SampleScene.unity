@@ -3410,6 +3410,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 651f81b65ed75a64fb84c6d8b43020f4, type: 3}
   - {fileID: 8300000, guid: 7baa1d8ecd47fb0479a0b4552593afad, type: 3}
   - {fileID: 8300000, guid: bf44ab78b1033e74b8a420532a40a35d, type: 3}
+  final: {fileID: 8300000, guid: 8e7ded8cb4ed6d149858c870d1144c9d, type: 3}
   sfxPlayer: {fileID: 1673168499}
 --- !u!4 &1673168498
 Transform:

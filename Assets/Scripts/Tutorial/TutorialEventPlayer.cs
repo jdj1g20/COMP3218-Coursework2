@@ -27,6 +27,7 @@ public class TutorialEventPlayer : MonoBehaviour
 
     public AudioClip[] clips;
     public AudioSource sfxPlayer;
+    public AudioClip final;
 
     public void start(){
         sfxPlayer = GetComponent<AudioSource>();
@@ -167,6 +168,10 @@ public class TutorialEventPlayer : MonoBehaviour
             kingdomStats.ChangeStats(decision.stat2, decision.stat2Amount);
             // Update kingdom stats sprites
             kingdomStats.UpdateStatSprites();
+        }
+
+        if(finalEvent){
+            sfxPlayer.PlayOneShot(final);
         }
 
         eventString += "Press space to continue...";
