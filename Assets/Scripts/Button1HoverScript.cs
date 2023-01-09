@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class Button1HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
@@ -14,6 +15,8 @@ public class Button1HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
     MainGameLoopScript mainGameLoopScript;
     [SerializeField]
     ButtonSelectScript buttonSelectScript;
+    [SerializeField]
+    Image buttonImage;
     
     public void OnPointerEnter(PointerEventData eventData) {
         Debug.Log("Mouse Enter Button1");
@@ -24,6 +27,8 @@ public class Button1HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
                 string stat1 = currentEvent.decision1.stat1;
                 string stat2 = currentEvent.decision1.stat2;    
                 ChangeStatColourYellow(CheckStat(stat1), CheckStat(stat2));
+            } else {
+                ChangeButtonColourYellow();
             }
             
         } else {
@@ -47,6 +52,9 @@ public class Button1HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
             string stat1 = currentEvent.decision1.stat1;
             string stat2 = currentEvent.decision1.stat2;
             ChangeStatColourWhite(CheckStat(stat1), CheckStat(stat2));
+            if (mainEventPlayer.finalEvent) {
+                ChangeButtonColourWhite();
+            }
         } else {
             Debug.Log("Generic Event playing");
             Event currentEvent = eventPlayer.currentEvent;
@@ -89,5 +97,12 @@ public class Button1HoverScript : MonoBehaviour, IPointerEnterHandler, IPointerE
         if (sprite2 != null) {
             sprite2.color = Color.white;
         }
+    }
+
+    private void ChangeButtonColourYellow () {
+        buttonImage.color = Color.yellow;
+    }
+    private void ChangeButtonColourWhite () {
+        buttonImage.color = Color.white;
     }
 }

@@ -82,7 +82,7 @@
             }
         },
         {
-            "description": "Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision, but not by how much. \n Oh my, your father is back! But, oh no, he looks wounded!",
+            "description": "Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision (in yellow), but not by how much until after you have made the decision. \n \n  Oh my, your father is back! But, oh no, he looks wounded!",
             "advisor": "civilA",
             "SFX": "",
             "decision1Desc": "How intriguing!",
@@ -108,7 +108,7 @@
 
             }
         },{
-            "description": "Stop messing around! Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision, but not by how much. \n Oh my, your father is back! But, oh no, he looks wounded!",
+            "description": "Stop messing around! Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision (in yellow), but not by how much until after you have made the decision. \n \n  Oh my, your father is back! But, oh no, he looks wounded!",
             "advisor": "civilA",
             "SFX": "",
             "decision1Desc": "How intriguing!",
@@ -135,7 +135,7 @@
             }
         },
         {
-            "description": "My son... The battle was a stalemate... Queen Whiskers was killed in the fighting, but I have been mortally wounded... You must rise up and take the throne of Ratopolis... Be a better king than I was... Blargh... \u002A dies \u002A",
+            "description": "My son... The battle was a stalemate... Queen Whiskers was killed in the fighting, but I have been mortally wounded... You must rise up and take the throne of Ratopolis... Be a better king than I was... Blargh... \\\u00D7dies\u00D7",
             "advisor": "civilA",
             "SFX": "",
             "decision1Desc": "Noooo, father!!!",

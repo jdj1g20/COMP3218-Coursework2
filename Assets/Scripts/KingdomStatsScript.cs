@@ -18,17 +18,23 @@ public class KingdomStatsScript : MonoBehaviour
     void Awake()
     {
         Debug.Log("Initialising StatList");
-        militaryT.SetText("5");
-        economyT.SetText("5");
-        diplomacyT.SetText("5");
-        approvalT.SetText("5");
-        foodT.SetText("5");
+        int militaryStart = Random.Range(4,6);
+        int economyStart = Random.Range(4,6);
+        int diplomacyStart = Random.Range(4,6);
+        int approvalStart = Random.Range(4,6);
+        int foodStart = Random.Range(4,6);
+
+        militaryT.SetText(militaryStart.ToString());
+        economyT.SetText(economyStart.ToString());
+        diplomacyT.SetText(diplomacyStart.ToString());
+        approvalT.SetText(approvalStart.ToString());
+        foodT.SetText(foodStart.ToString());
         statList = new List<StatType>() {
-            new StatType("military", 5, militarySprites, militarySpriteRenderer, militaryT),
-            new StatType("economy", 5, economySprites, economySpriteRenderer, economyT),
-            new StatType("diplomacy", 5, diplomacySprites, diplomacySpriteRenderer, diplomacyT),
-            new StatType("approval", 5, approvalSprites, approvalSpriteRenderer, approvalT),
-            new StatType("food", 5, foodSprites, foodSpriteRenderer, foodT)};
+            new StatType("military", militaryStart, militarySprites, militarySpriteRenderer, militaryT),
+            new StatType("economy", economyStart, economySprites, economySpriteRenderer, economyT),
+            new StatType("diplomacy", diplomacyStart, diplomacySprites, diplomacySpriteRenderer, diplomacyT),
+            new StatType("approval", approvalStart, approvalSprites, approvalSpriteRenderer, approvalT),
+            new StatType("food", foodStart, foodSprites, foodSpriteRenderer, foodT)};
     }
     
     
@@ -81,9 +87,12 @@ public class KingdomStatsScript : MonoBehaviour
             Debug.Log("Turning stat red");
             stat.spriteRenderer.color = Color.red;
         }
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Turning stat white");
-        stat.spriteRenderer.color = Color.white;
+        if (stat.statAmount > 0) {
+            yield return new WaitForSeconds(1f);
+            Debug.Log("Turning stat white");
+            stat.spriteRenderer.color = Color.white;
+        }
+        
     }
     public void UpdateStatSprites () {
         foreach (var stat in statList)
