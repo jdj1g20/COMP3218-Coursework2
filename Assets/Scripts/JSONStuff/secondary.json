@@ -507,7 +507,7 @@
         }
       },
       {
-        "description": "A battle for succession to the Barony of the Bush has arisen. How should we stop the fighting?",
+        "description": "A battle for the succession to the Barony of the Bush has arisen. How should we stop the fighting?",
         "advisor": "civilA",
         "SFX": "",
         "decision1Desc": "Seize the land and give it to the common rats.",

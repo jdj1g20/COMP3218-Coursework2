@@ -7,7 +7,7 @@
             "decision1Desc": "We will send him aid!",
             "decision1Next": 1,
             "decision1": {
-                "description": "The food that you've given was received and put to good use, King Meothew sends his thanks.",
+                "description": "The food that you've given was received and put to good use, King Meowthew sends his thanks.",
                 "stat1": "food",
                 "stat1Amount": -2,
                 "stat2": "diplomacy",
@@ -238,7 +238,7 @@
             }
         },
 	    {
-            "description": "My liege! We have been tricked! The trade caravans hid a large number of cat soldiers who have smuggled their way into the city and are making their way to the castle! King Purrcival has sent a demand that if we surrender, he will spare your life. Will you surrender, or shall we meet them in battle?",
+            "description": "My liege! We have been tricked! The trade caravans sent to us by King Purrcival hid a large number of cat soldiers who have smuggled their way into the city and are making their way to the castle! King Purrcival has sent a demand that if we surrender, he will spare your life. Will you surrender, or shall we meet them in battle?",
             "advisor": "militaryA",
             "SFX": "battleSound",
             "decision1Desc": "We will not back down! Attack!!",

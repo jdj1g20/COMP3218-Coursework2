@@ -95,9 +95,14 @@ public class TutorialEventPlayer : MonoBehaviour
         else
         {
             // Otherwise, the event must have ended
-            currentEventEnded = true;
+            StartCoroutine(TextEndedYield());
 
         }
+    }
+
+    private IEnumerator TextEndedYield() {
+        yield return new WaitForEndOfFrame();
+        currentEventEnded = true;
     }
 
     public void RevealEventChoices()

@@ -13,7 +13,7 @@ public class TextRevealScript : MonoBehaviour
 
     public IEnumerator NewTextToDisplay(string textToDisplay, bool isGeneric)
     {
-        spaceDetected = false;
+        
 
         text = gameObject.GetComponent<TextMeshProUGUI>();
         text.text = textToDisplay;
@@ -23,7 +23,8 @@ public class TextRevealScript : MonoBehaviour
 
         text.maxVisibleCharacters = 0;
 
-
+        spaceDetected = false;
+        
         for (int visibleCount = 1; visibleCount <= totalVisibleChars; visibleCount++)
         {
             text.maxVisibleCharacters = visibleCount;

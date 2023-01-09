@@ -108,7 +108,7 @@
 
             }
         },{
-            "description": "Stop messing around! Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision (in yellow), but not by how much until after you have made the decision. \n \n  Oh my, your father is back! But, oh no, he looks wounded!",
+            "description": "Stop messing around! Different decisions you make may affect the kingdom's statistics positively or negatively. You can see which stats will be affected by a decision (in yellow), but not by how much until after you have made the decision. \n  Oh my, your father is back! But, oh no, he looks wounded!",
             "advisor": "civilA",
             "SFX": "",
             "decision1Desc": "How intriguing!",

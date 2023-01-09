@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class MainGameLoopScript : MonoBehaviour
 {
@@ -78,8 +79,7 @@ public class MainGameLoopScript : MonoBehaviour
     public void FinishedReadingExposition() {
         if (playingIntroduction) {
             Debug.Log("Finished reading introduction, waiting for space");
-            playingIntroduction = false;
-            displayingIntroduction = true;
+            StartCoroutine(FinishedIntroductionExp());
             
         } else if (playingGameOverExposition) {
             Debug.Log ("Finished reading game over exposition");
@@ -88,6 +88,12 @@ public class MainGameLoopScript : MonoBehaviour
             playAgainButton.SetActive(true);
             exitButton.SetActive(true);
         }
+    }
+
+    private IEnumerator FinishedIntroductionExp() {
+        yield return new WaitForEndOfFrame();
+        playingIntroduction = false;
+        displayingIntroduction = true;
     }
 
     public void FinishedHidingExposition() {
@@ -118,6 +124,7 @@ public class MainGameLoopScript : MonoBehaviour
 
     public void IntroductionExpositionFinished() {
         playingMainEvent = true;
+        mainEventPlayer.firstEvent = true;
         mainEventPlayer.PlayEvent(mainEvents.mainEvents[mainEventNo]);
         //genericEventPlayer.PlayEvent(mainEvents.events[0]);
         eventNo++;
@@ -125,6 +132,7 @@ public class MainGameLoopScript : MonoBehaviour
     }
 
     public void EventEnded() {
+        mainEventPlayer.firstEvent = false;
         playingGenericEvent = false;
         playingMainEvent = false;
 

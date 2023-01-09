@@ -85,9 +85,14 @@ public class GenericEventPlayer : EventPlayer
         else
         {
             // Otherwise, the event must have ended
-            currentEventEnded = true;
-
+            //currentEventEnded = true;
+            StartCoroutine(TextEndedYield());
         }
+    }
+
+    private IEnumerator TextEndedYield() {
+        yield return new WaitForEndOfFrame();
+        currentEventEnded = true;
     }
 
     public override void RevealEventChoices()
@@ -150,7 +155,7 @@ public class GenericEventPlayer : EventPlayer
             eventString += "Decreasing ";
         }
         eventString += decision.stat2 + " by " + Mathf.Abs(decision.stat2Amount) + "\n";
-        eventString += "Press space to continue...";
+        //eventString += "Press space to continue...";
 
         // Play SFX
         for(int i = 0; i < clips.Length; i++){

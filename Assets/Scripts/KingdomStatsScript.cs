@@ -80,7 +80,7 @@ public class KingdomStatsScript : MonoBehaviour
         return newAmount;
     }
     private IEnumerator ChangeStatColour(StatType stat, int amount) {
-        if (amount > 0) {
+        if (amount >= 0) {
             Debug.Log("Turning stat green");
             stat.spriteRenderer.color = Color.green;
         } else {

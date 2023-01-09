@@ -25,6 +25,8 @@ public class MainEventPlayer : MonoBehaviour
     public int nextMainEvent;
     public bool finalEvent = false;
 
+    public bool firstEvent = true;
+
     public AudioClip[] clips;
     public AudioClip final;
     public AudioSource sfxPlayer;
@@ -89,9 +91,13 @@ public class MainEventPlayer : MonoBehaviour
         else
         {
             // Otherwise, the event must have ended
-            currentEventEnded = true;
+            StartCoroutine(TextEndedYield());
 
         }
+    }
+    private IEnumerator TextEndedYield() {
+        yield return new WaitForEndOfFrame();
+        currentEventEnded = true;
     }
 
     public void RevealEventChoices()
@@ -166,8 +172,10 @@ public class MainEventPlayer : MonoBehaviour
         if(finalEvent){
             sfxPlayer.PlayOneShot(final);
         }
-
-        eventString += "Press space to continue...";
+        if (firstEvent) {
+            eventString += "Press space to continue...";
+        }
+        
 
         
         // Start displaying event string 
