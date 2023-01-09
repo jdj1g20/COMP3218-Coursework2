@@ -224,7 +224,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "MillitaryPlus"
+                "SFX": "End"
             },
             "decision2Desc": "Who rules the Cat Kingdom is none of our concern.",
             "decision2Next": 18,
@@ -249,7 +249,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "MillitaryPlus"
+                "SFX": "End"
             },
             "decision2Desc": "It is over, raise the white flag.",
             "decision2Next": 20,
@@ -259,7 +259,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "MillitaryMinus"
+                "SFX": "End"
             }
         },
 	    {
@@ -274,7 +274,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "MillitaryPlus"
+                "SFX": "End"
             },
             "decision2Desc": "We will use our defences to wear them out.",
             "decision2Next": 22,
@@ -374,7 +374,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "MillitaryPlus"
+                "SFX": "End"
             },
             "decision2Desc": "They should attack the archers on the east flank!",
             "decision2Next": 30,
@@ -384,7 +384,7 @@
                 "stat1Amount": 0,
                 "stat2": "",
                 "stat2Amount": 0,
-                "SFX": "MillitaryPlus"
+                "SFX": "End"
             }
         }
     ]

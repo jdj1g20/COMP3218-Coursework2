@@ -157,11 +157,7 @@ public class MainEventPlayer : MonoBehaviour
             eventString += decision.stat2 + " by " + Mathf.Abs(decision.stat2Amount) + "\n";
 
             // Play SFX
-            for(int i = 0; i < clips.Length; i++){
-                if (decision.SFX==clips[i].name){
-                    sfxPlayer.PlayOneShot(clips[i]);
-                }
-            }
+            
             // Adjust kingdom stats
             kingdomStats.ChangeStats(decision.stat1, decision.stat1Amount);
             kingdomStats.ChangeStats(decision.stat2, decision.stat2Amount);
@@ -169,9 +165,11 @@ public class MainEventPlayer : MonoBehaviour
             kingdomStats.UpdateStatSprites();
         }
 
-        if(finalEvent){
-            sfxPlayer.PlayOneShot(final);
-        }
+        for(int i = 0; i < clips.Length; i++){
+                if (decision.SFX==clips[i].name){
+                    sfxPlayer.PlayOneShot(clips[i]);
+                }
+            }
         if (firstEvent) {
             eventString += "Press space to continue...";
         }
